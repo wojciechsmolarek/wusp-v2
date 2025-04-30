@@ -112,7 +112,7 @@ const experiences = [
 
 	<!-- Banner -->
 	
-	<section class="relative w-full bg-hero bg-no-repeat bg-cover h-screen lg:min-h-[110vh] px-12 xl:px-0 flex items-center ">
+	<section class="relative w-full bg-no-repeat bg-cover h-screen lg:min-h-[110vh] px-12 xl:px-0 flex items-center ">
 		<Picture
 			formats={['avif', 'webp']}
 			src="/banner.png"
@@ -121,9 +121,9 @@ const experiences = [
 			height="1002"
 			loading="eager"
 			fetchpriority="high"
-			class="w-full h-full absolute -z-10"
+			class="w-full h-full absolute min-w-fit top-[0]"
 		/>
-		<div class="lg:max-w-[1200px] w-full mx-auto flex flex-col">
+		<div class="lg:max-w-[1200px] w-full mx-auto flex flex-col z-1">
 			<h1 class="text-[40px] leading-[50px] md:text-[60px] xl:text-[85px] pb-4 font-dm md:leading-[91.25px] w-full xl:max-w-[50%] text-primary-200">Twój partner w szyciu tapicerki meblowej</h1>
 			<p class="text-base md:text-[22px] pb-5 text-text-gray-200 w-full lg:max-w-[50%]">Zaufaj doświadczeniu i precyzji – realizujemy zlecenia tapicerskie dla producentów mebli, firm stolarskich i projektantów wnętrz.</p>
 			<Button text="Zapytaj o ofertę"/>
