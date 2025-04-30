@@ -15,7 +15,7 @@ module.exports = {
       },
       fontFamily: {
         dm: ["DM Serif Display", "serif"],
-        jost: ["Jost", "sans-serif"], // Ensure fonts with spaces have " " surrounding it.
+        jost: ["Inter", "sans-serif"], // Ensure fonts with spaces have " " surrounding it.
       },
       colors: {
         // Configure your color palette here
