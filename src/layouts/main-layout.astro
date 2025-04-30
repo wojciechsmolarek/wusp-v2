@@ -4,17 +4,20 @@ import Footer from '../components/footer.tsx'
 
 export interface LayoutProps {
   title : string 
+  description?: string;
+  robots?: string;
 }
 
-const { title } = Astro.props as LayoutProps
+const { title, description, robots } = Astro.props as LayoutProps
 ---
 
 
-<html lang="en">
+<html lang="pl">
   <head>
     <meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="description" content="Wusp Jarocin" />  
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content={robots || "index, follow"}>
+    <meta name="description" content="{description || ""}">  
     <title>{title}</title>
   </head>
   <body>
@@ -24,10 +27,8 @@ const { title } = Astro.props as LayoutProps
       <!-- All different pages to be rendered here -->
       <Footer />
     </main>
-    <p class="tracking-tight text-base text-center border border-gray-300 bg-white py-10 lg:text-[22px] lg:leading-[33px] font-jost text-text-gray">
-        Copyright © Interno | Designed by Onwudebelu Prisca Ebubechukwu
+    <p class="tracking-tight text-base text-center border border-gray-300 bg-white py-10 lg:text-[18px] font-jost text-text-gray">
+        Copyright © WUSP Jarocin | Utworzone przez <a href="https://www.wojciechsmolarek.pl/">Wojciecha Smolarka</a>
     </p>
   </body>
 </html>
-
-
