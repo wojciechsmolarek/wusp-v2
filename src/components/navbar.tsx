@@ -28,6 +28,12 @@ const Navbar = () => {
           <a href="/services" className={linkStyle}>
             Oferta
           </a>
+          <a href="/services" className={linkStyle}>
+            Realizacje
+          </a>
+          <a href="/services" className={linkStyle}>
+            Współpraca
+          </a>
           <a href="/contact" className={linkStyle}>
             Kontakt
           </a>
@@ -72,6 +78,12 @@ const Navbar = () => {
           </a>
           <a href="/services" className={linkStyle}>
             Oferta
+          </a>
+          <a href="/services" className={linkStyle}>
+            Realizacje
+          </a>
+          <a href="/services" className={linkStyle}>
+            Współpraca
           </a>
           <a href="/contact" className={linkStyle}>
             Kontakt
