@@ -8,6 +8,7 @@ const Logo = () => (
     height={120}
     loading="eager"
     fetchPriority="high"
+    className="z-2"
   />
 );
 export default Logo;
