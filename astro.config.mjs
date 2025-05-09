@@ -10,10 +10,7 @@ export default defineConfig({
   integrations: [
     tailwind(),
     react(),
-    sitemap({
-      entryLimit: 50000,
-      createLinkInHead: true,
-    }),
+    sitemap(),
   ],
   output: "server",
   adapter: vercel(),
