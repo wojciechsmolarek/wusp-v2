@@ -6,7 +6,15 @@ import sitemap from "@astrojs/sitemap";
 
 export default defineConfig({
   site: 'https://wusp-jarocin.pl/',
-  integrations: [tailwind(), react(), sitemap()],
+  trailingSlash: 'never',
+  integrations: [
+    tailwind(),
+    react(),
+    sitemap({
+      entryLimit: 50000,
+      createLinkInHead: true,
+    }),
+  ],
   output: "server",
   adapter: vercel(),
   devToolbar: {
