@@ -15,7 +15,7 @@ const Experience = ({
         i === 3 ? "" : "border-r"
       } border-primary-100 items-center justify-center gap-4`}
     >
-      <h5 className="text-primary-100 text-[50px] lg:text-[85px] tracking-widest leading-[70px] font-dm lg:leading-[106.25px] ">
+      <span className="text-primary-100 text-[50px] lg:text-[85px] tracking-widest leading-[70px] font-dm lg:leading-[106.25px] ">
         {/* <CountUp
           duration={3}
           start={0}
@@ -24,7 +24,7 @@ const Experience = ({
           scrollSpyDelay={0}
         /> */}
         {num}
-      </h5>
+      </span>
       <p className="text-text-gray-200 text-base text-center lg:text-lg font-jost tracking-tight lg:leading-9">
         {text}
       </p>
