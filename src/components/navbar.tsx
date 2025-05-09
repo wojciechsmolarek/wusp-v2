@@ -22,19 +22,19 @@ const Navbar = () => {
           <a href="/" className={linkStyle}>
             Strona główna
           </a>
-          <a href="/about" className={linkStyle}>
+          <a href="/o-nas" className={linkStyle}>
             O nas
           </a>
-          <a href="/services" className={linkStyle}>
+          <a href="/oferta" className={linkStyle}>
             Oferta
           </a>
-          <a href="/services" className={linkStyle}>
+          <a href="/realizacje" className={linkStyle}>
             Realizacje
           </a>
-          <a href="/services" className={linkStyle}>
+          <a href="/wspolpraca" className={linkStyle}>
             Współpraca
           </a>
-          <a href="/contact" className={linkStyle}>
+          <a href="/kontakt" className={linkStyle}>
             Kontakt
           </a>
         </nav>
@@ -73,19 +73,19 @@ const Navbar = () => {
           <a href="/" className={linkStyle}>
             Strona główna
           </a>
-          <a href="/about" className={linkStyle}>
+          <a href="/o-nas" className={linkStyle}>
             O nas
           </a>
-          <a href="/services" className={linkStyle}>
+          <a href="/oferta" className={linkStyle}>
             Oferta
           </a>
-          <a href="/services" className={linkStyle}>
+          <a href="/realizacje" className={linkStyle}>
             Realizacje
           </a>
-          <a href="/services" className={linkStyle}>
+          <a href="/wspolpraca" className={linkStyle}>
             Współpraca
           </a>
-          <a href="/contact" className={linkStyle}>
+          <a href="/kontakt" className={linkStyle}>
             Kontakt
           </a>
         </motion.nav>
