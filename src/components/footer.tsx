@@ -1,99 +1,100 @@
 import Facebook from "../icons/facebook.tsx";
-import Instagram from "../icons/instagram.tsx";
-import LinkedIn from "../icons/linkedin.tsx";
-import Logo from "../icons/logo.tsx";
-import Twitter from "../icons/twitter.tsx";
 
 const Footer = () => {
   return (
     <footer className="mt-[135px] w-full">
       <div className="w-full max-w-[1200px] px-12 xl:px-0 mx-auto pb-[135px] grid grid-cols-1 lg:grid-cols-5 md:grid-cols-2 gap-6">
-        {/* start */}
+
         <div className="col-span-1 md:col-span-2">
-          <a href="/" className="">
-            <Logo />
+          <a href="/">
+            <img src="/logo-wusp.svg" alt="WUSP Jarocin" width="150" height="120" loading="lazy" />
           </a>
           <p className="tracking-tight text-base lg:text-[22px] lg:leading-[33px] font-jost text-text-gray pt-[18px] pb-[33px]">
-            It is a long established fact that a reader will be distracted
-            lookings.
+            Szwalnia tapicerki meblowej. Gwarancja wykonanania. Zapraszamy do współpracy.
           </p>
           <div className="flex gap-5 md:gap-[54px]">
             <a href="/">
               <Facebook />
             </a>
-            <a href="/">
-              <Twitter />
+          </div>
+        </div>
+        <div className="col-span-1 flex flex-col gap-4">
+          <span className="text-primary-200 font-dm text-[22px] lg:text-[25px] leading-loose">
+            Strony informacyjne
+          </span>
+          <div className="flex flex-col gap-6">
+            <a
+              href="/o-nas"
+              className="tracking-tight text-base lg:text-[22px] lg:leading-[33px] font-jost text-text-gray"
+            >
+              O nas
             </a>
-            <a href="/">
-              <LinkedIn />
+            <a
+              href="/regulamin"
+              className="tracking-tight text-base lg:text-[22px] lg:leading-[33px] font-jost text-text-gray"
+            >
+              Regulamin
             </a>
-            <a href="/">
-              <Instagram />
+            <a
+              href="/polityka-prywatnosci"
+              className="tracking-tight text-base lg:text-[22px] lg:leading-[33px] font-jost text-text-gray"
+            >
+              Polityka prywatności
             </a>
           </div>
         </div>
         <div className="col-span-1 flex flex-col gap-4">
-          <h5 className="text-primary-200 font-dm text-[22px] lg:text-[25px] leading-loose">
-            Pages
-          </h5>
+          <span className="text-primary-200 font-dm text-[22px] lg:text-[25px] leading-loose">
+            Nasza oferta
+          </span>
           <div className="flex flex-col gap-6">
             <a
-              href="/about"
+              href="/oferta"
               className="tracking-tight text-base lg:text-[22px] lg:leading-[33px] font-jost text-text-gray"
             >
-              About Us
+              Oferta
             </a>
             <a
-              href="/services"
+              href="/realizacje"
               className="tracking-tight text-base lg:text-[22px] lg:leading-[33px] font-jost text-text-gray"
             >
-              Services
+              Realizacje
             </a>
+            <a
+              href="/wspolpraca"
+              className="tracking-tight text-base lg:text-[22px] lg:leading-[33px] font-jost text-text-gray"
+            >
+              Współpraca
+            </a>
+          </div>
+        </div>
+        <div className="col-span-1 flex flex-col gap-4">
+          <span className="text-primary-200 font-dm text-[22px] lg:text-[25px] leading-loose">
             <a
               href="/contact"
               className="tracking-tight text-base lg:text-[22px] lg:leading-[33px] font-jost text-text-gray"
             >
-              Contact Us
+              Kontakt
+            </a>
+          </span>
+          <div className="flex flex-col gap-6">
+            <p className="tracking-tight text-base lg:text-[22px] lg:leading-[33px] font-jost text-text-gray">
+              Ul. Wojska Polskiego 47, 63-200 Jarocin
+            </p>
+            <a
+              href="mailto:kontakt@wusp-jarocin.pl"
+              className="tracking-tight text-base lg:text-[22px] lg:leading-[33px] font-jost text-text-gray"
+            >
+              kontakt@wusp-jarocin.pl
+            </a>
+            <a
+              href="tel:+48607442592"
+              className="tracking-tight text-base lg:text-[22px] lg:leading-[33px] font-jost text-text-gray"
+            >
+              +48 607 442 592
             </a>
           </div>
         </div>
-        <div className="col-span-1 flex flex-col gap-4">
-          <h5 className="text-primary-200 font-dm text-[22px] lg:text-[25px] leading-loose">
-            Services
-          </h5>
-          <div className="flex flex-col gap-6">
-            <p className="tracking-tight text-base lg:text-[22px] lg:leading-[33px] font-jost text-text-gray">
-              Kitchen
-            </p>
-            <p className="tracking-tight text-base lg:text-[22px] lg:leading-[33px] font-jost text-text-gray">
-              Living Room
-            </p>
-            <p className="tracking-tight text-base lg:text-[22px] lg:leading-[33px] font-jost text-text-gray">
-              Dining Hall
-            </p>
-            <p className="tracking-tight text-base lg:text-[22px] lg:leading-[33px] font-jost text-text-gray">
-              Bedroom
-            </p>
-          </div>
-        </div>
-        <div className="col-span-1 flex flex-col gap-4">
-          <h5 className="text-primary-200 font-dm text-[22px] lg:text-[25px] leading-loose">
-            Contact
-          </h5>
-          <div className="flex flex-col gap-6">
-            <p className="tracking-tight text-base lg:text-[22px] lg:leading-[33px] font-jost text-text-gray">
-              55 East Birchwood Ave. Brooklyn, New York 11201
-            </p>
-            <p className="tracking-tight text-base lg:text-[22px] lg:leading-[33px] font-jost text-text-gray">
-              contact@interno.com
-            </p>
-            <p className="tracking-tight text-base lg:text-[22px] lg:leading-[33px] font-jost text-text-gray">
-              (123) 456 - 7890
-            </p>
-          </div>
-        </div>
-
-        {/* End */}
       </div>
     </footer>
   );
