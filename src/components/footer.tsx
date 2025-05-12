@@ -94,10 +94,10 @@ const FooterSection = ({
   isContact?: boolean 
 }) => (
   <div className="col-span-1 flex flex-col gap-4">
-    <h2 className="text-primary-200 font-dm text-[22px] lg:text-[20px] leading-loose">
+    <span className="text-primary-200 font-dm text-[22px] lg:text-[20px] leading-loose">
       {isContact ? (
         <a 
-          href="/contact" 
+          href="/kontakt" 
           className="tracking-tight inline-block text-base lg:text-[20px] lg:leading-[25px] font-jost text-text-gray hover:text-primary-200 transition-colors duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary-200 focus-visible:rounded-sm"
         >
           <span className="relative group">
@@ -109,7 +109,7 @@ const FooterSection = ({
       ) : (
         title
       )}
-    </h2>
+    </span>
     <div className="flex flex-col gap-6">
       {links.map((link, index) => (
         <FooterLink 

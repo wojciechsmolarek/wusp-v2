@@ -7,7 +7,7 @@ const Logo = () => (
     width={150}
     height={120}
     loading={"eager"}
-    fetchPriority={"high"}
+    fetchpriority={"high"}
   />
 );
 export default Logo;

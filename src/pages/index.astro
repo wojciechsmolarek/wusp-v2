@@ -5,20 +5,22 @@ import ArrowSec from '../icons/arrow-sec.tsx';
 import CallIcon from "../icons/call.tsx";
 import Experience from '../components/experience.tsx';
 import { Picture } from "astro:assets";
-
 // Dane przeniesione do zmiennych dla lepszej organizacji
 const services = [
   {
     title: 'Szycie tapicerki na zamówienie',
-    text: 'Szyjemy tapicerkę meblową na łóżka, kanapy, fotele, pufy i inne meble według specyfikacji klienta.'
+    text: 'Szyjemy tapicerkę meblową na łóżka, kanapy, fotele, pufy i inne meble według specyfikacji klienta.',
+    url: '/oferta'
   },
   {
     title: 'Współpraca B2B',
-    text: 'Obsługujemy producentów mebli i firmy stolarskie, zapewniając terminowość, jakość i elastyczność.'
+    text: 'Obsługujemy producentów mebli i firmy stolarskie, zapewniając terminowość, jakość i elastyczność.',
+    url: '/wspolpraca'
   },
   {
     title: 'Nowoczesny park maszynowy',
-    text: 'Dysponujemy zaawansowanym zapleczem technologicznym, co gwarantuje powtarzalność i wysoką jakość wykonania.'
+    text: 'Dysponujemy zaawansowanym zapleczem technologicznym, co gwarantuje powtarzalność i wysoką jakość wykonania.',
+    url: '/park-maszynowy'
   },
 ];
 
@@ -125,8 +127,8 @@ const experiences = [
       width="1374"
       height="1002"
       loading="eager"
-      fetchpriority="high"
-      class="w-full h-full absolute top-[0] left-[0] object-cover object-bottom-right"
+      fetchPriority="high"
+      class="w-full h-full absolute inset-0 object-bottom object-cover"
     />
     <div class="relative lg:max-w-[1200px] w-full my-[9em] md:my-[10em] lg:mx-auto flex flex-col">
       <h1 class="text-[40px] leading-[50px] md:text-[60px] xl:text-[70px] pb-4 font-dm md:leading-[80px] w-full xl:max-w-[50%] text-primary-200">
@@ -144,23 +146,25 @@ const experiences = [
     class="lg:max-w-[1200px] flex flex-col gap-8 lg:gap-10 lg:flex-row px-12 xl:px-0 w-full mx-auto pt-[100px] lg:pt-[200px] justify-between"
     aria-labelledby="services-heading"
   >
-    <h2 id="services-heading" class="sr-only">Nasze usługi</h2>
     {services.map((service) => (
-      <div class="w-full max-w-[358px] mx-auto flex flex-col justify-center items-center gap-3 md:gap-5">
-        <h3 class="text-center text-text-blue font-dm text-[22px] md:text-[25px] leading-loose">{service.title}</h3>
-        <p class="text-base md:text-[22px] tracking-tight text-text-gray leading-[33px] text-center">{service.text}</p>
+      <div 
+        class="w-full max-w-[358px] mx-auto flex flex-col justify-center items-center gap-3 md:gap-5 p-6 rounded-lg transition-transform duration-300 hover:scale-105 group relative"
+      >
         <a 
-          href="/oferta" 
-          class="text-text-gray-200 leading-snug text-lg tracking-tight font-semibold gap-2 py-4 md:py-8 startCenter group relative inline-flex items-center"
+          href={service.url} 
+          class="absolute inset-0 z-10"
           aria-label={`Dowiedz się więcej o ${service.title}`}
         >
+          <span class="sr-only">{service.title}</span>
+        </a>
+        <span class="text-center text-text-blue font-dm text-[22px] md:text-[25px] leading-loose">{service.title}</span>
+        <span class="text-base md:text-[22px] tracking-tight text-text-gray leading-[33px] text-center">{service.text}</span>
+        <div class="flex items-center gap-2 text-text-gray-200 leading-snug text-lg tracking-tight font-semibold py-4">
           <span>Dowiedz się więcej</span>
           <span class="transition-transform duration-300 group-hover:translate-x-1">
             <ArrowSec />
           </span>
-          <span class="absolute bottom-0 left-0 w-full h-0.5 bg-text-gray-200 transform scale-x-0 
-                     transition-transform duration-300 ease-out origin-left group-hover:scale-x-100"></span>
-        </a>
+        </div>
       </div>
     ))}
   </section>
@@ -201,11 +205,11 @@ const experiences = [
     <div class="overflow-hidden rounded-lg">
       <Picture 
         formats={['avif', 'webp']}
-        src="/about-img.png"
+        src="/imgs/magazyn-z-materialami.webp"
         alt="Wnętrze domu z tapicerką meblową"
         width="653"
         height="700"
-        class="w-full h-auto hover:scale-105 transition-transform duration-700"
+        class="w-full h-auto hover:scale-105 transition-transform duration-700 rounded-[3%_25%_3%_25%/3%_25%_3%_25%]"
         loading="lazy"
       />
     </div>
