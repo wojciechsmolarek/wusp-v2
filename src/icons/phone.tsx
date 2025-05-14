@@ -1,7 +1,10 @@
 import React from "react";
 
-const Phone = () => {
-  return (
+interface IconProps {
+  className?: string;
+}
+
+const Phone: React.FC<IconProps> = ({ className }) => (
     <svg
       width="52"
       height="52"
@@ -18,6 +21,5 @@ const Phone = () => {
       />
     </svg>
   );
-};
 
 export default Phone;

@@ -1,27 +1,39 @@
 import Mail from "../icons/mail.tsx";
 import Phone from "../icons/phone.tsx";
-import Web from "../icons/web.tsx";
-import ArrowPri from "../icons/arrow-pri.tsx";
 
 const ContactInfo = () => {
   return (
-    <div className="col-span-1 bg-primary-300 rounded-[30px] px-8 py-[76px] flex flex-col gap-[30px] w-full">
-      <span className="flex flex-col xl:flex-row gap-4 items-center text-xl text-center xl:text-left font-jost tracking-tight">
-        {" "}
-        <Mail /> kontakt@wusp-jarocin.pl
-      </span>
-      <span className="flex flex-col xl:flex-row gap-4 items-center text-xl text-center xl:text-left font-jost tracking-tight">
-        {" "}
-        <Phone /> +48 607 442 592
-      </span>
-      <span className="flex flex-col xl:flex-row gap-4 items-center text-xl text-center xl:text-left font-jost tracking-tight">
-        {" "}
-        <Web /> ul. Wojska Polskiego 47, 63-200 Jarocin
-      </span>
-      <span className="flex flex-col xl:flex-row gap-4 items-center text-xl text-center xl:text-left font-jost tracking-tight">
-        {" "}
-        <ArrowPri /> NIP: 6170001384<br/>KRS: 0000146398<br/>REGON: 000843052
-      </span>
+    <div className="card card-lg w-full max-w-[480px] mx-auto bg-primary-300 rounded-[36px] shadow-lg px-8 py-12 flex flex-col gap-8">
+      <div className="card-header mb-2">
+        <h2 className="text-[28px] lg:text-[36px] font-dm text-primary-200 text-center tracking-wide leading-tight">
+          Dane kontaktowe
+        </h2>
+      </div>
+      <div className="card-body flex flex-col gap-7">
+        <a
+          href="mailto:kontakt@wusp-jarocin.pl"
+          className="flex items-center gap-4 text-xl font-jost tracking-tight text-text-gray-200 hover:text-primary-200 transition-colors duration-200 justify-center"
+        >
+          <Mail className="w-7 h-7 text-primary-200" />
+          kontakt@wusp-jarocin.pl
+        </a>
+        <a
+          href="tel:+48607442592"
+          className="flex items-center gap-4 text-xl font-jost tracking-tight text-text-gray-200 hover:text-primary-200 transition-colors duration-200 justify-center"
+        >
+          <Phone className="w-7 h-7 text-primary-200" />
+          +48 607 442 592
+        </a>
+        <div className="flex flex-col gap-1 text-center text-lg font-jost tracking-tight text-text-gray-200">
+          <span className="font-semibold text-primary-200">
+            Wytwórczo Usługowa Spółdzielnia Pracy Jarocin
+          </span>
+          <span>ul. Wojska Polskiego 47, 63-200 Jarocin</span>
+          <span>NIP: 6170001384</span>
+          <span>KRS: 0000146398</span>
+          <span>REGON: 000843052</span>
+        </div>
+      </div>
     </div>
   );
 };

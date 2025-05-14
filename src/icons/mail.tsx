@@ -1,7 +1,10 @@
 import React from "react";
 
-const Mail = () => {
-  return (
+interface IconProps {
+  className?: string;
+}
+
+const Mail: React.FC<IconProps> = ({ className }) => (
     <svg
       width="52"
       height="52"
@@ -26,6 +29,5 @@ const Mail = () => {
       />
     </svg>
   );
-};
 
 export default Mail;
