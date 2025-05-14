@@ -1,0 +1,119 @@
+---
+import Button from "./button.tsx";
+---
+
+<form
+  id="form"
+  method="POST"
+  action="https://api.web3forms.com/submit"
+  class="w-full grid grid-cols-2 gap-x-10 gap-y-[50px]"
+  autocomplete="off"
+>
+  <input type="hidden" name="access_key" value="TWÓJ_ACCESS_KEY" />
+  <input type="checkbox" class="hidden" style="display:none;" name="botcheck" tabindex="-1" autocomplete="off" />
+
+  <label for="name" class="col-span-1">
+    <input
+      type="text"
+      name="name"
+      id="name"
+      class="border-b w-full border-black outline-none py-3 text-base lg:text-[22px] lg:leading-[33px] tracking-tight font-jost text-text-gray"
+      placeholder="Imię i nazwisko"
+      required
+    />
+  </label>
+  <label for="email" class="col-span-1">
+    <input
+      type="email"
+      name="email"
+      id="email"
+      class="border-b w-full border-black outline-none py-3 text-base lg:text-[22px] lg:leading-[33px] tracking-tight font-jost text-text-gray"
+      placeholder="Email"
+      required
+    />
+  </label>
+  <label for="subject" class="col-span-1">
+    <input
+      type="text"
+      name="subject"
+      id="subject"
+      class="border-b w-full border-black outline-none py-3 text-base lg:text-[22px] lg:leading-[33px] tracking-tight font-jost text-text-gray"
+      placeholder="Temat"
+    />
+  </label>
+  <label for="phone" class="col-span-1">
+    <input
+      type="tel"
+      name="phone"
+      id="phone"
+      class="border-b w-full border-black outline-none py-3 text-base lg:text-[22px] lg:leading-[33px] tracking-tight font-jost text-text-gray"
+      placeholder="Telefon"
+    />
+  </label>
+  <label for="message" class="col-span-2">
+    <textarea
+      name="message"
+      id="message"
+      class="border-b w-full border-black outline-none py-3 text-base lg:text-[22px] lg:leading-[33px] tracking-tight font-jost text-text-gray"
+      rows="8"
+      placeholder="Wiadomość"
+      required
+    ></textarea>
+  </label>
+  <div class="w-full flex justify-end col-span-2">
+    <button
+      type="submit"
+      class="px-8 py-3 bg-primary-200 text-white rounded-lg font-jost text-lg hover:bg-primary-300 transition"
+    >
+      Wyślij
+    </button>
+  </div>
+  <div id="result" class="col-span-2 text-center mt-2 text-base"></div>
+</form>
+
+<script is:inline>
+  document.addEventListener("DOMContentLoaded", () => {
+    const form = document.getElementById("form");
+    const result = document.getElementById("result");
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const formData = new FormData(form);
+      const object = Object.fromEntries(formData);
+      const json = JSON.stringify(object);
+
+      result.innerHTML = "Wysyłanie...";
+
+      fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: json,
+      })
+        .then(async (response) => {
+          let json = await response.json();
+          if (response.status == 200) {
+            result.innerHTML = "Dziękujemy! Wiadomość została wysłana.";
+            result.className = "col-span-2 text-center mt-2 text-base text-green-600";
+          } else {
+            result.innerHTML = "Wystąpił błąd: " + json.message;
+            result.className = "col-span-2 text-center mt-2 text-base text-red-600";
+          }
+        })
+        .catch(() => {
+          result.innerHTML = "Coś poszło nie tak!";
+          result.className = "col-span-2 text-center mt-2 text-base text-red-600";
+        })
+        .then(() => {
+          form.reset();
+          setTimeout(() => {
+            result.innerHTML = "";
+            result.className = "col-span-2 text-center mt-2 text-base";
+          }, 4000);
+        });
+    });
+  });
+</script>

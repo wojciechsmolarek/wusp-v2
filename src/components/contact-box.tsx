@@ -3,13 +3,14 @@ import Phone from "../icons/phone.tsx";
 
 const ContactInfo = () => {
   return (
-    <div className="card card-lg w-full max-w-[480px] mx-auto bg-primary-300 rounded-[36px] shadow-lg px-8 py-12 flex flex-col gap-8">
-      <div className="card-header mb-2">
+    <div className="w-full max-w-[480px] mx-auto bg-primary-300 rounded-[36px] shadow-lg px-6 py-10 sm:px-8 sm:py-12 flex flex-col gap-8">
+      <div className="mb-2 flex flex-col items-center">
         <h2 className="text-[28px] font-dm text-primary-200 text-center tracking-wide leading-tight">
           Dane kontaktowe
         </h2>
+        <span className="block w-12 h-1 mt-2 rounded-full bg-primary-200/60" />
       </div>
-      <div className="card-body flex flex-col gap-7">
+      <div className="flex flex-col gap-7">
         <div className="flex flex-col gap-1 text-center text-lg font-jost tracking-tight text-text-gray-200">
           <span className="font-semibold text-primary-200">
             Wytwórczo Usługowa Spółdzielnia Pracy Jarocin
@@ -19,16 +20,17 @@ const ContactInfo = () => {
           <span>KRS: 0000146398</span>
           <span>REGON: 000843052</span>
         </div>
+        <div className="my-2 border-t border-primary-200/30" />
         <a
           href="mailto:kontakt@wusp-jarocin.pl"
-          className="flex items-center gap-4 text-lg font-jost tracking-tight text-text-gray-200 hover:text-primary-200 transition-colors duration-200 justify-center"
+          className="flex items-center gap-4 text-lg font-jost tracking-tight text-text-gray-200 hover:text-primary-200 transition-colors duration-200 justify-center lg:justify-start text-center lg:text-left font-semibold"
         >
           <Mail className="w-7 h-7 text-primary-200" />
           kontakt@wusp-jarocin.pl
         </a>
         <a
           href="tel:+48607442592"
-          className="flex items-center gap-4 text-lg font-jost tracking-tight text-text-gray-200 hover:text-primary-200 transition-colors duration-200 justify-center"
+          className="flex items-center gap-4 text-lg font-jost tracking-tight text-text-gray-200 hover:text-primary-200 transition-colors duration-200 justify-center lg:justify-start text-center lg:text-left font-semibold"
         >
           <Phone className="w-7 h-7 text-primary-200" />
           +48 607 442 592
