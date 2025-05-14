@@ -8,10 +8,9 @@ const ContactInfo = () => {
         <h2 className="text-[28px] font-dm text-primary-200 text-center tracking-wide leading-tight">
           Dane kontaktowe
         </h2>
-        <span className="block w-12 h-1 mt-2 rounded-full bg-primary-200/60" />
       </div>
       <div className="flex flex-col gap-7">
-        <div className="flex flex-col gap-1 text-center text-lg font-jost tracking-tight text-text-gray-200">
+        <div className="flex flex-col gap-1 text-lg font-jost tracking-tight text-text-gray-200">
           <span className="font-semibold text-primary-200">
             Wytwórczo Usługowa Spółdzielnia Pracy Jarocin
           </span>
@@ -23,14 +22,14 @@ const ContactInfo = () => {
         <div className="my-2 border-t border-primary-200/30" />
         <a
           href="mailto:kontakt@wusp-jarocin.pl"
-          className="flex items-center gap-4 text-lg font-jost tracking-tight text-text-gray-200 hover:text-primary-200 transition-colors duration-200 justify-center lg:justify-start text-center lg:text-left font-semibold"
+          className="flex items-center gap-4 text-lg font-jost tracking-tight text-text-gray-200 hover:text-primary-200 transition-colors duration-200 justify-center lg:justify-start font-semibold"
         >
           <Mail className="w-7 h-7 text-primary-200" />
           kontakt@wusp-jarocin.pl
         </a>
         <a
           href="tel:+48607442592"
-          className="flex items-center gap-4 text-lg font-jost tracking-tight text-text-gray-200 hover:text-primary-200 transition-colors duration-200 justify-center lg:justify-start text-center lg:text-left font-semibold"
+          className="flex items-center gap-4 text-lg font-jost tracking-tight text-text-gray-200 hover:text-primary-200 transition-colors duration-200 justify-center lg:justify-start font-semibold"
         >
           <Phone className="w-7 h-7 text-primary-200" />
           +48 607 442 592
