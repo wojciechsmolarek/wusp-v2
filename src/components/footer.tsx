@@ -16,6 +16,7 @@ const footerSections = [
     links: [
       { href: "/oferta", label: "Oferta" },
       { href: "/realizacje", label: "Realizacje" },
+      { href: "/park-maszynowy", label: "Park maszynowy" },
       { href: "/wspolpraca", label: "Współpraca" }
     ]
   },
