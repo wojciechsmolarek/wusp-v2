@@ -8,7 +8,7 @@ const footerSections = [
     links: [
       { href: "/o-nas", label: "O nas" },
       { href: "/regulamin", label: "Regulamin" },
-      { href: "/polityka-prywatnosci", label: "Polityka prywatności" }
+      { href: "/polityka-prywatnosci", label: "Polityka prywatności" },
       { href: "/polityka-cookies", label: "Polityka cookies" }
     ]
   },
