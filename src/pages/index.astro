@@ -115,19 +115,18 @@ const experiences = [
   title="Wytwórczo Usługowa Spółdzielnia Pracy Jarocin - szwalnia tapicerki meblowej"
   description="Szwalnia tapicerki meblowej. Narożniki, zestawy mebli, sofy, kanapy. Gwarancja wykonanania. Zapraszamy do współpracy."
 >
-  <!-- Banner - zoptymalizowany pod kątem wydajności -->
+  <!-- Banner -->
   <section 
     class="relative w-full bg-no-repeat bg-cover lg:min-h-[70vh] px-12 xl:px-0 flex items-center"
     aria-label="Baner główny"
   >
     <Picture
-      formats={['avif', 'webp']}
       src="/imgs/banner-homepage.webp"
       alt="Twój partner w szyciu tapicerki meblowej"
       width="1374"
       height="1002"
       loading="eager"
-      fetchPriority="high"
+      fetchpriority="high"
       class="w-full h-full absolute inset-0 object-bottom object-cover"
     />
     <div class="relative lg:max-w-[1200px] w-full my-[9em] md:my-[10em] lg:mx-auto flex flex-col">
@@ -141,7 +140,7 @@ const experiences = [
     </div>
   </section>
 
-  <!-- Services Section - zoptymalizowana -->
+  <!-- Services Section -->
   <section 
     class="lg:max-w-[1200px] flex flex-col gap-8 lg:gap-10 lg:flex-row px-12 xl:px-0 w-full mx-auto pt-[100px] lg:pt-[200px] justify-between"
     aria-labelledby="services-heading"
@@ -169,7 +168,7 @@ const experiences = [
     ))}
   </section>
 
-  <!-- About Section - zoptymalizowana -->
+  <!-- About Section -->
   <section 
     class="w-full lg:max-w-[1200px] mx-auto px-12 xl:px-0 flex flex-col-reverse justify-center items-center lg:grid grid-cols-2 gap-[75px] pt-[100px] lg:pt-[200px]"
     aria-labelledby="about-heading"
@@ -182,7 +181,7 @@ const experiences = [
         Tworzymy tapicerkę, która buduje wartość Twoich produktów
       </h2>
       <p class="text-base md:text-[22px] text-center lg:text-left tracking-tight text-text-gray leading-[33px]">
-        Od ponad 35 lat wspieramy firmy z branży meblarskiej jako solidny podwykonawca tapicerki. Łączymy tradycję rzemiosła z nowoczesną technologią, oferując kompleksową obsługę – od prototypu po produkcję seryjną.
+        Od 1956 roku, jako solidny podwykonawca, wspieramy firmy z branży krawcowo-odzieżowej oraz tapicerskiej. Łączymy tradycję rzemiosła z nowoczesną technologią, oferując kompleksową obsługę – od prototypu po produkcję seryjną.
       </p>
       <div class="flex gap-4 pt-3 items-center">
         <CallIcon />
