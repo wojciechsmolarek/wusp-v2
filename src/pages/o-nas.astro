@@ -23,7 +23,7 @@ import Instagram  from '../icons/instagram.tsx';
   <!-- Quote Section -->
 
   <section class="w-full px-12 lg:px-0 pt-[100px] lg:pt-[200px] lg:max-w-[1200px] mx-auto flex items-center justify-center">
-    <QuoteText text="I like an interior that defies labeling. I don't really want someone to walk into a room and know that I did it" name="BUNNY WILLIAMS"/>
+    <QuoteText text="Nasze doświadczenie to gwarancja jakości każdego zamówienia." name="WUSP Jarocin"/>
   </section>
 
   <!-- What We Do Section -->
@@ -31,10 +31,20 @@ import Instagram  from '../icons/instagram.tsx';
   <section class="w-full pt-[100px] lg:pt-[150px] px-12 lg:px-0 mx-auto lg:max-w-[1200px] ">
     <div class="w-full flex flex-col-reverse lg:flex-row justify-between gap-10 items-center">
       <div class="flex flex-col gap-6">
-        <h2 class="text-[30px] text-center lg:text-left font-dm tracking-wide capitalize leading-8 md:leading-[62.50px] md:text-[50px] text-text-blue ">We what we do</h2>
-        <p class="text-base md:text-[22px] lg:max-w-[85%] text-center lg:text-left tracking-tight font-jost text-text-gray leading-[33px]">It is a long established fact that a reader will be distracted by the of readable content of a page when lookings at its layouts the points of using that it has a more-or-less normal.</p>
+        <span class="text-[30px] text-center lg:text-left font-dm tracking-wide leading-8 md:leading-[62.50px] md:text-[50px] text-text-blue ">Czym się zajmujemy?</span>
+        <p class="text-base md:text-[22px] lg:max-w-[85%] text-center lg:text-left tracking-tight font-jost text-text-gray leading-[33px]">Specjalizujemy się w szyciu pokrowców, tapicerki i wyrobów tekstylnych dla producentów mebli i branży akustycznej. Realizujemy zamówienia seryjne oraz nietypowe projekty dla firm z całej Polski.</p>
       </div>
-      <img src="/about1.png" alt="">
+      <div class="overflow-hidden rounded-lg">
+        <Picture 
+          formats={['avif', 'webp']}
+          src="/imgs/walki-materialu.webp"
+          alt="Wnętrze domu z tapicerką meblową"
+          width="659"
+          height="377"
+          class="w-full h-auto hover:scale-105 transition-transform duration-700 rounded-md"
+          loading="lazy"
+        />
+      </div>
     </div>
   </section>
 
@@ -43,8 +53,8 @@ import Instagram  from '../icons/instagram.tsx';
    <section class="w-full pt-[100px] lg:pt-[150px] px-12 lg:px-0 mx-auto lg:max-w-[1200px] ">
     <div class="w-full flex flex-col-reverse lg:flex-row-reverse justify-between gap-24 items-center">
       <div class="flex flex-col gap-6">
-        <h2 class="text-[30px] text-center lg:text-left font-dm tracking-wide capitalize leading-8 md:leading-[62.50px] md:text-[50px] text-text-blue ">The End Result</h2>
-        <p class="text-base md:text-[22px] lg:max-w-[95%] text-center lg:text-left tracking-tight font-jost text-text-gray leading-[33px]">It is a long established fact that a reader will be distracted by the of readable content of a page when lookings at its layouts the points of using that it has a more-or-less normal.</p>
+        <span class="text-[30px] text-center lg:text-left font-dm tracking-wide leading-8 md:leading-[62.50px] md:text-[50px] text-text-blue ">Efekt końcowy</span>
+        <p class="text-base md:text-[22px] lg:max-w-[95%] text-center lg:text-left tracking-tight font-jost text-text-gray leading-[33px]">Dostarczamy wyroby tekstylne i tapicerskie, które spełniają najwyższe standardy jakości, terminowości i precyzji wykonania – zawsze zgodnie z oczekiwaniami naszych klientów biznesowych.</p>
       </div>
       <img src="/about2.png" alt="">
     </div>
@@ -54,7 +64,7 @@ import Instagram  from '../icons/instagram.tsx';
 
   <section class="w-full py-[100px] lg:py-[185px] mt-[173px] px-12 lg:px-0 mx-auto bg-primary-300 ">
     <div class="w-full flex flex-col gap-10 lg:max-w-[1200px] mx-auto" >
-		  <h2 class="font-dm tracking-wide text-center leading-[37px] lg:leading-[62.50px] text-[30px] lg:text-[50px] w-full lg:max-w-[50%] pb-9 mx-auto">What the People Thinks About Us</h2>
+		  <span class="font-dm tracking-wide text-center leading-[37px] lg:leading-[62.50px] text-[30px] lg:text-[50px] w-full lg:max-w-[50%] pb-9 mx-auto">Nasz zespół</span>
       <div class="flex w-full overflow-x-scroll gap-4 flex-row no-scrollbar">
         <img src="/person1.png" alt="">
         <img src="/person2.png" alt="">
