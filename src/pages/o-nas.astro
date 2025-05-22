@@ -9,7 +9,7 @@ import { Picture } from "astro:assets";
 ---
 
 
-<MainLayout title = 'Interior Design About Us'>
+<MainLayout title = 'O nas' description = 'Sprawdź, co nas wyróżnia i dlaczego warto nam zaufać. Nasze doświadczenie to gwarancja jakości każdego zamówienia.'>
 
   <!-- Banner Section -->
 
@@ -38,7 +38,7 @@ import { Picture } from "astro:assets";
         <Picture 
           formats={['avif', 'webp']}
           src="/imgs/walki-materialu.webp"
-          alt="Wnętrze domu z tapicerką meblową"
+          alt="Wałki materiału do szycia pokrowców"
           width="659"
           height="377"
           class="w-full h-auto hover:scale-105 transition-transform duration-700 rounded-2xl"
@@ -60,7 +60,29 @@ import { Picture } from "astro:assets";
         <Picture 
           formats={['avif', 'webp']}
           src="/imgs/uszyte-siedzisko.webp"
-          alt="Wnętrze domu z tapicerką meblową"
+          alt="Uszyte siedzisko - gotowy produkt"
+          width="659"
+          height="377"
+          class="w-full h-auto hover:scale-105 transition-transform duration-700 rounded-2xl"
+          loading="lazy"
+        />
+      </div>
+    </div>
+  </section>
+
+    <!-- Cert -->
+
+  <section class="w-full pt-[100px] lg:pt-[150px] px-12 lg:px-0 mx-auto lg:max-w-[1200px] ">
+    <div class="w-full flex flex-col-reverse lg:flex-row justify-between gap-10 items-center">
+      <div class="flex flex-col gap-6">
+        <span class="text-[30px] text-center lg:text-left font-dm tracking-wide leading-8 md:leading-[62.50px] md:text-[50px] text-text-blue ">Firma z licznymi wyróżnieniami</span>
+        <p class="text-base md:text-[22px] lg:max-w-[85%] text-center lg:text-left tracking-tight font-jost text-text-gray leading-[33px]">Możemy pochwalić się prestiżowymi certyfikatami „Firma Godna Zaufania”. Certyfikaty te przyznawane są przedsiębiorstwom, które wyróżniają się rzetelnością, wysoką jakością usług oraz pozytywną opinią wśród klientów i partnerów biznesowych.</p>
+      </div>
+      <div class="overflow-hidden">
+        <Picture 
+          formats={['avif', 'webp']}
+          src="/imgs/certyfikaty-wusp-jarocin.webp"
+          alt="Certyfikaty i dyplomy WUSP Jarocin"
           width="659"
           height="377"
           class="w-full h-auto hover:scale-105 transition-transform duration-700 rounded-2xl"
