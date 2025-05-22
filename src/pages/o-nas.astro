@@ -34,14 +34,14 @@ import { Picture } from "astro:assets";
         <span class="text-[30px] text-center lg:text-left font-dm tracking-wide leading-8 md:leading-[62.50px] md:text-[50px] text-text-blue ">Czym się zajmujemy?</span>
         <p class="text-base md:text-[22px] lg:max-w-[85%] text-center lg:text-left tracking-tight font-jost text-text-gray leading-[33px]">Specjalizujemy się w szyciu pokrowców, tapicerki i wyrobów tekstylnych dla producentów mebli i branży akustycznej. Realizujemy zamówienia seryjne oraz nietypowe projekty dla firm z całej Polski.</p>
       </div>
-      <div class="overflow-hidden rounded-lg">
+      <div class="overflow-hidden">
         <Picture 
           formats={['avif', 'webp']}
           src="/imgs/walki-materialu.webp"
           alt="Wnętrze domu z tapicerką meblową"
           width="659"
           height="377"
-          class="w-full h-auto hover:scale-105 transition-transform duration-700 rounded-md"
+          class="w-full h-auto hover:scale-105 transition-transform duration-700 rounded-2xl"
           loading="lazy"
         />
       </div>
@@ -56,7 +56,17 @@ import { Picture } from "astro:assets";
         <span class="text-[30px] text-center lg:text-left font-dm tracking-wide leading-8 md:leading-[62.50px] md:text-[50px] text-text-blue ">Efekt końcowy</span>
         <p class="text-base md:text-[22px] lg:max-w-[95%] text-center lg:text-left tracking-tight font-jost text-text-gray leading-[33px]">Dostarczamy wyroby tekstylne i tapicerskie, które spełniają najwyższe standardy jakości, terminowości i precyzji wykonania – zawsze zgodnie z oczekiwaniami naszych klientów biznesowych.</p>
       </div>
-      <img src="/about2.png" alt="">
+      <div class="overflow-hidden">
+        <Picture 
+          formats={['avif', 'webp']}
+          src="/imgs/uszyte-siedzisko.webp"
+          alt="Wnętrze domu z tapicerką meblową"
+          width="659"
+          height="377"
+          class="w-full h-auto hover:scale-105 transition-transform duration-700 rounded-2xl"
+          loading="lazy"
+        />
+      </div>
     </div>
   </section>
 
