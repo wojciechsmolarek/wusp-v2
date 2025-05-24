@@ -3,6 +3,9 @@ import tailwind from "@astrojs/tailwind";
 import react from "@astrojs/react";
 import vercel from "@astrojs/vercel/serverless";
 import sitemap from "@astrojs/sitemap";
+import partytown from "@astrojs/partytown";
+
+import jopSoftwarecookieconsent from "@jop-software/astro-cookieconsent";
 
 export default defineConfig({
   site: 'https://wusp-jarocin.pl/',
@@ -11,6 +14,12 @@ export default defineConfig({
     tailwind(),
     react(),
     sitemap(),
+    jopSoftwarecookieconsent(),
+    partytown({
+      config: {
+        forward: ["dataLayer.push"],
+      },
+    }),
   ],
   output: "server",
   adapter: vercel(),
