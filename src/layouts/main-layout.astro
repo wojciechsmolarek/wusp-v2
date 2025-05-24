@@ -29,26 +29,6 @@ const isBot = /bot|crawl|spider|slurp/i.test(userAgent)
 <html lang="pl">
   <head>
     <meta charset="utf-8" />
-
-    <!-- Google Analytics z Partytown -->
-    <script type="text/partytown" src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}></script>
-    <script type="text/partytown">
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      
-      // Domyślnie ustaw wszystko na 'denied'
-      gtag('consent', 'default', {
-        'ad_storage': 'denied',
-        'analytics_storage': 'denied',
-        'functionality_storage': 'denied',
-        'personalization_storage': 'denied',
-        'security_storage': 'granted'
-      });
-      
-      gtag('js', new Date());
-      gtag('config', GA_MEASUREMENT_ID);
-    </script>
-
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{pageTitle}</title>
     <meta name="robots" content={robots} />
@@ -56,11 +36,26 @@ const isBot = /bot|crawl|spider|slurp/i.test(userAgent)
     <link rel="canonical" href={canonical} />
     <meta name="google-site-verification" content="xvXG3rZMSFvEn-K4FY67d0ngYVtCWBqN3y6E7zR20Dk" />
 
-    <!-- CookieConsent CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@3.0.1/dist/cookieconsent.css" />
-
+    <!-- Google Analytics -->
     {!isBot && (
-      <script type="module" src="/src/utils/cookieconsent-config.js"></script>
+      <>
+        <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}></script>
+        <script define:vars={{ GA_MEASUREMENT_ID }}>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          
+          gtag('consent', 'default', {
+            'ad_storage': 'denied',
+            'analytics_storage': 'denied',
+            'functionality_storage': 'denied',
+            'personalization_storage': 'denied',
+            'security_storage': 'granted'
+          });
+          
+          gtag('js', new Date());
+          gtag('config', GA_MEASUREMENT_ID);
+        </script>
+      </>
     )}
   </head>
   <body>
@@ -72,7 +67,5 @@ const isBot = /bot|crawl|spider|slurp/i.test(userAgent)
     <p class="tracking-tight text-base text-center border border-gray-300 bg-white py-10 lg:text-[18px] text-text-gray">
       Copyright © WUSP Jarocin | Utworzone przez <a href="https://www.wojciechsmolarek.pl/">Wojciecha Smolarka</a>
     </p>
-    <!-- CookieConsent Script -->
-    <script type="module" src="/src/utils/cookieconsent-config.js"></script>
   </body>
 </html>
