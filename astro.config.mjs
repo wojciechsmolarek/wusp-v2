@@ -1,4 +1,3 @@
-// astro.config.mjs
 import { defineConfig } from "astro/config";
 import tailwind from "@astrojs/tailwind";
 import react from "@astrojs/react";
@@ -20,19 +19,38 @@ export default defineConfig({
           position: 'bottom right',
           equalWeightButtons: true,
           flipButtons: false
-        },
-        preferencesModal: {
-          layout: 'box',
-          position: 'right',
-          equalWeightButtons: true,
-          flipButtons: false
         }
       },
       categories: {
         necessary: {
           readOnly: true
         },
-        analytics: {}
+        analytics: {
+          services: {
+            ga4: {
+              label: '<a href="https://policies.google.com/privacy" target="_blank">Google Analytics</a>',
+              onAccept: () => {
+                if (typeof gtag !== 'undefined') {
+                  gtag('consent', 'update', {
+                    'analytics_storage': 'granted'
+                  });
+                }
+              },
+              onReject: () => {
+                if (typeof gtag !== 'undefined') {
+                  gtag('consent', 'update', {
+                    'analytics_storage': 'denied'
+                  });
+                }
+              },
+              cookies: [
+                { name: /^_ga/ },
+                { name: '_gid' },
+                { name: '_gat' }
+              ]
+            }
+          }
+        }
       },
       language: {
         default: 'pl',
@@ -52,7 +70,7 @@ export default defineConfig({
               savePreferencesBtn: 'Zapisz preferencje',
               sections: [
                 {
-                  title: 'Niezbędne pliki cookie',
+                  title: 'Niezbędne pliki cookie <span class="pm__badge">Zawsze włączone</span>',
                   description: 'Te pliki cookie są niezbędne do prawidłowego funkcjonowania strony.',
                   linkedCategory: 'necessary'
                 },

@@ -21,9 +21,25 @@ const isHome = Astro.url.pathname === "/"
 const pageTitle = isHome ? title : `${title} | ${SITE_SUFFIX}`
 const canonical = canonicalUrl ?? new URL(Astro.url.pathname, Astro.site).toString()
 
-const GA_MEASUREMENT_ID = "G-YT20K3K922"
 const userAgent = Astro.request.headers.get('user-agent') || ''
 const isBot = /bot|crawl|spider|slurp/i.test(userAgent)
+
+// Przygotuj kod JavaScript jako string
+const analyticsScript = `
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  
+  gtag('consent', 'default', {
+    'ad_storage': 'denied',
+    'analytics_storage': 'denied',
+    'functionality_storage': 'denied',
+    'personalization_storage': 'denied',
+    'security_storage': 'granted'
+  });
+  
+  gtag('js', new Date());
+  gtag('config', 'G-YT20K3K922');
+`;
 ---
 
 <html lang="pl">
@@ -39,22 +55,8 @@ const isBot = /bot|crawl|spider|slurp/i.test(userAgent)
     <!-- Google Analytics -->
     {!isBot && (
       <>
-        <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}></script>
-        <script define:vars={{ GA_MEASUREMENT_ID }}>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          
-          gtag('consent', 'default', {
-            'ad_storage': 'denied',
-            'analytics_storage': 'denied',
-            'functionality_storage': 'denied',
-            'personalization_storage': 'denied',
-            'security_storage': 'granted'
-          });
-          
-          gtag('js', new Date());
-          gtag('config', GA_MEASUREMENT_ID);
-        </script>
+        <script async src={`https://www.googletagmanager.com/gtag/js?id=G-YT20K3K922`}></script>
+        <script set:html={analyticsScript}></script>
       </>
     )}
   </head>
