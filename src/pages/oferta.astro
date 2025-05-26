@@ -101,44 +101,6 @@ const howWeWorkDetails = [
 		}
 	</section>
 
-  <!-- How We Work Section -->
-  <section class="px-12 xl:px-0 w-full mt-[100px] lg:mt-[200px] min-h-screen ">
-   <div class="w-full lg:max-w-[1200px] p-12 mx-auto lg:px-[116px] lg:py-[160px] bg-primary-300 rounded-[70px] ">
-     <h2 class="font-dm tracking-wide text-center leading-[37px] lg:leading-[62.50px] text-[30px] lg:text-[50px] w-full capitalize lg:max-w-[50%] pb-2 mx-auto">How We Work</h2>
-		<p class="text-base md:text-[22px] text-center tracking-tight font-jost text-text-gray leading-[33px] lg:max-w-[60%] mx-auto">It is a long established fact that a reader will be distracted by the of readable content of page  lookings at its layouts  points.</p>
-
-    <div class="pt-[70px] lg:pt-[100px] flex flex-col gap-[70px] ">
-      <!-- Inner Sections -->
-
-      {
-        howWeWorkDetails.map((detail, index) => {
-          const ImageIcon = detail.imgIcon
-          const NumberIcon = detail.numIcon
-          const className = `flex justify-between flex-col ${index % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"} gap-[50px] items-center max-w-[967px]`
-
-          return(
-            <div class={className}>
-              <img src={detail.img} alt=""/>
-              <div class="flex flex-col gap-12 lg:gap-[58px]">
-                <div class="justify-between hidden lg:flex">
-                  <ImageIcon />
-                  <NumberIcon/>
-                </div>
-                <div class="flex flex-col gap-3">
-                  <h3 class="text-text-blue font-dm text-[22px] md:text-[25px] leading-loose">{detail.title}</h3>
-                  <p class="text-base md:text-[22px] tracking-tight font-jost text-text-gray leading-[33px]">{detail.info}</p>
-                </div>
-              </div>
-            </div>
-          )
-        })
-      }
-
-      <!-- Inner Sections End -->
-    </div>
-   </div>
-  </section>
-
 </MainLayout>
 
 <style>
