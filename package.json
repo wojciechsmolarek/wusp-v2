@@ -3,6 +3,8 @@
     "dev": "astro dev"
   },
   "dependencies": {
+    "@astrojs/vercel": "^5.0.2",
+    "@jop-software/astro-cookieconsent": "^2.0.0",
     "@studio-freight/lenis": "^1.0.27"
   },
   "devDependencies": {
