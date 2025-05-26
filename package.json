@@ -3,7 +3,9 @@
     "dev": "astro dev"
   },
   "dependencies": {
-    "@studio-freight/lenis": "^1.0.27",
+    "@studio-freight/lenis": "^1.0.27"
+  },
+  "devDependencies": {
     "astro": "^4.0.0"
   }
 }
