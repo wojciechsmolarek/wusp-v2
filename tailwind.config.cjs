@@ -13,12 +13,14 @@ module.exports = {
         services: "url('/servicespage-bg.jpg')",
         contact: "url('/contactpage-bg.jpg')",
       },
+      backgroundSize: {
+        'banner-size': '105% auto',
+      },
       fontFamily: {
         dm: ["DM Serif Display", "serif"],
         inter: ["Inter", "sans-serif"],
       },
       colors: {
-        // Configure your color palette here
         primary: {
           100: "#CDA274",
           200: "#292F36",

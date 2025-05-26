@@ -16,6 +16,7 @@
     "@astrojs/tailwind": "^5.1.5",
     "@astrojs/vercel": "^8.0.4",
     "@jop-software/astro-cookieconsent": "^3.0.1",
+    "@studio-freight/lenis": "^1.0.39",
     "@types/react": "^18.3.21",
     "@types/react-dom": "^18.3.7",
     "@vercel/routing-utils": "^4.0.0",

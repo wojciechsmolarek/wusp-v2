@@ -40,9 +40,22 @@ const analyticsScript = `
   gtag('js', new Date());
   gtag('config', 'G-YT20K3K922');
 `;
+
+const smoothScrollScript = `
+  import Lenis from '@studio-freight/lenis';
+
+  const lenis = new Lenis();
+
+  function raf(time) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+  }
+
+  requestAnimationFrame(raf);
+`;
 ---
 
-<html lang="pl">
+<html lang="pl" class="scroll-smooth">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -59,6 +72,9 @@ const analyticsScript = `
         <script set:html={analyticsScript}></script>
       </>
     )}
+    
+    <!-- Smooth Scroll -->
+    <script type="module" set:html={smoothScrollScript}></script>
   </head>
   <body>
     <main>
