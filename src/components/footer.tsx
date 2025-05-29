@@ -17,8 +17,7 @@ const footerSections = [
     links: [
       { href: "/oferta", label: "Oferta" },
       { href: "/realizacje", label: "Realizacje" },
-      { href: "/park-maszynowy", label: "Park maszynowy" },
-      { href: "/wspolpraca", label: "Współpraca" }
+      { href: "/park-maszynowy", label: "Park maszynowy" }
     ]
   },
   {
@@ -139,7 +138,7 @@ const Footer = () => {
           >
             <img 
               src="/logo-wusp.svg" 
-              alt="WUSP Jarocin" 
+              alt="Logo WUSP Jarocin" 
               width="150" 
               height="120" 
               loading="lazy" 

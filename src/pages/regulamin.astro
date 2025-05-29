@@ -1,102 +1,112 @@
 ---
-import MainLayout from '../layouts/main-layout.astro'
+import MainLayout from '../layouts/main-layout.astro';
+import StructuredData from '../components/structured-data.astro';
+import PageBanner from '../components/page-banner.astro';
+
+// Content sections data for better maintainability
+const regulationSections = [
+  {
+    title: "1. Postanowienia ogólne",
+    items: [
+      `Niniejszy regulamin określa zasady korzystania ze strony internetowej dostępnej pod adresem <strong>www.wusp-jarocin.pl</strong> (dalej: „Strona").`,
+      `Właścicielem Strony jest Wytwórczo Usługowa Spółdzielnia Pracy Jarocin z siedzibą przy ul. Wojska Polskiego 47, 63-200 Jarocin, NIP: 6170001384, KRS: 0000146398, REGON: 000843052.`,
+      `Kontakt z właścicielem Strony możliwy jest poprzez e-mail: <a href="mailto:kontakt@wusp-jarocin.pl" class="text-primary-200 underline">kontakt@wusp-jarocin.pl</a> lub telefon: <a href="tel:+48607442592" class="text-primary-200 underline">+48 607 442 592</a>.`
+    ]
+  },
+  {
+    title: "2. Zakres działalności",
+    items: [
+      "Strona internetowa ma charakter informacyjny i prezentuje ofertę usług szwalniczych świadczonych przez Wytwórczo Usługową Spółdzielnię Pracy Jarocin.",
+      "Usługi realizowane są na podstawie indywidualnych zamówień i ustaleń z klientem.",
+      "Szczegółowe warunki realizacji usług, w tym terminy, ceny oraz ewentualne przekazanie praw autorskich (jeśli dotyczy), ustalane są indywidualnie i potwierdzane w umowie lub zamówieniu."
+    ]
+  },
+  {
+    title: "3. Prawa i obowiązki użytkowników",
+    items: [
+      "Użytkownicy Strony zobowiązani są do korzystania z niej w sposób zgodny z obowiązującym prawem, dobrymi obyczajami oraz postanowieniami niniejszego regulaminu.",
+      "Zabronione jest dostarczanie treści o charakterze bezprawnym za pośrednictwem formularzy kontaktowych lub innych narzędzi dostępnych na Stronie.",
+      "Użytkownicy mogą kontaktować się z właścicielem Strony w celu uzyskania oferty, zadania pytań lub omówienia szczegółów współpracy."
+    ]
+  },
+  {
+    title: "4. Zasady współpracy",
+    items: [
+      "Wszelkie zamówienia realizowane są na podstawie indywidualnych ustaleń pomiędzy klientem a Wytwórczo Usługową Spółdzielnią Pracy Jarocin.",
+      "Rozliczenia za wykonane usługi odbywają się na podstawie faktury VAT wystawianej przez Spółdzielnię.",
+      "Szczegółowe warunki realizacji zamówień oraz ewentualnego przekazania praw autorskich (jeśli dotyczy) określane są w umowie zawieranej z klientem."
+    ]
+  },
+  {
+    title: "5. Ochrona danych osobowych",
+    items: [
+      "Właściciel Strony przetwarza dane osobowe użytkowników zgodnie z obowiązującymi przepisami prawa, w tym Rozporządzeniem Parlamentu Europejskiego i Rady (UE) 2016/679 (RODO).",
+      "Szczegółowe informacje dotyczące przetwarzania danych osobowych znajdują się w Polityce Prywatności dostępnej na Stronie."
+    ]
+  },
+  {
+    title: "6. Prawa własności intelektualnej",
+    items: [
+      "Wszelkie materiały zamieszczone na Stronie są chronione prawami autorskimi i należą do Wytwórczo Usługowej Spółdzielni Pracy Jarocin lub zostały wykorzystane za zgodą uprawnionych podmiotów.",
+      "Kopiowanie, rozpowszechnianie lub wykorzystywanie treści ze Strony bez zgody właściciela jest zabronione."
+    ]
+  },
+  {
+    title: "7. Odpowiedzialność",
+    items: [
+      "Właściciel Strony dokłada wszelkich starań, aby treści zamieszczone na Stronie były aktualne i rzetelne, jednak nie ponosi odpowiedzialności za ich wykorzystanie przez użytkowników.",
+      "Właściciel nie odpowiada za przerwy w działaniu Strony wynikające z przyczyn technicznych lub niezależnych od niego."
+    ]
+  },
+  {
+    title: "8. Postanowienia końcowe",
+    items: [
+      "Regulamin może być zmieniany przez właściciela Strony w dowolnym czasie, a jego zmieniona wersja będzie publikowana na Stronie internetowej.",
+      "Korzystanie ze Strony po wprowadzeniu zmian oznacza akceptację nowego regulaminu.",
+      "Regulamin wchodzi w życie z dniem 19.05.2025 r."
+    ]
+  }
+];
+
+// Common CSS classes
+const sectionClasses = "max-w-6xl mx-auto py-10 px-6 text-base md:text-[20px] tracking-tight text-text-gray leading-[33px]";
+const headingClasses = "text-3xl md:text-4xl font-dm text-primary-200 text-center mb-12";
 ---
 
+<MainLayout 
+  title="Regulamin strony" 
+  description="Regulamin strony internetowej Wytwórczo Usługowej Spółdzielni Pracy Jarocin. Sprawdź zasady korzystania z naszej strony oraz oferowanych usług."
+>
+  <!-- Structured Data -->
+  <StructuredData 
+    pageType="legal"
+    pageTitle="Regulamin"
+    pageDescription="Regulamin strony internetowej WUSP Jarocin"
+  />
 
-<MainLayout title = 'Regulamin strony' description = 'Regulamin strony internetowej Wytwórczo Usługowej Spółdzielni Pracy Jarocin. Sprawdź zasady korzystania z naszej strony oraz oferowanych usług.'>
+  <PageBanner 
+    title="Regulamin" 
+    breadcrumbText="Regulamin"
+  />
 
-  <!-- Banner Section -->
-
-  <section class="w-full bg-contact h-[350px] flex justify-center items-end">
-    <div class="py-[30px] lg:py-[41px] px-[60px] lg:px-[152px] flex flex-col justify-center items-center bg-white rounded-tl-[37px] rounded-tr-[37px] gap-2.5">
-      <h1 class="text-[30px] leading-[40px] lg:text-[50px] lg:leading-[62px] font-dm text-primary-200 ">Regulamin</h1>
-      <span class="text-base lg:text-[18px] lg:leading-[33px] tracking-tight font-jost text-text-gray"> <a href="/">Strona główna</a> / Regulamin</span>
-    </div>
-  </section>
-
-
-  <section class="max-w-6xl mx-auto py-20 px-6 text-base md:text-[20px] tracking-tight text-text-gray leading-[33px]">
-    <h2 class="text-3xl md:text-4xl font-dm text-primary-200 text-center mb-12">1. Postanowienia ogólne</h2>
-    <ol class="list-decimal ml-6 space-y-3">
-      <li>Niniejszy regulamin określa zasady korzystania ze strony internetowej dostępnej pod adresem <strong>www.wusp-jarocin.pl</strong> (dalej: „Strona”).</li>
-      <li>Właścicielem Strony jest Wytwórczo Usługowa Spółdzielnia Pracy Jarocin z siedzibą przy ul. Wojska Polskiego 47, 63-200 Jarocin, NIP: 6170001384, KRS: 0000146398, REGON: 000843052.</li>
-      <li>Kontakt z właścicielem Strony możliwy jest poprzez e-mail: <a href="mailto:kontakt@wusp-jarocin.pl" class="text-primary-200 underline">kontakt@wusp-jarocin.pl</a> lub telefon: <a href="tel:+48607442592" class="text-primary-200 underline">+48 607 442 592</a>.</li>
-    </ol>
-  </section>
-
-  <section class="max-w-6xl mx-auto py-10 px-6 text-base md:text-[20px] tracking-tight text-text-gray leading-[33px]">
-    <h2 class="text-3xl md:text-4xl font-dm text-primary-200 text-center mb-12">2. Zakres działalności</h2>
-    <ol class="list-decimal ml-6 space-y-3">
-      <li>Strona internetowa ma charakter informacyjny i prezentuje ofertę usług szwalniczych świadczonych przez Wytwórczo Usługową Spółdzielnię Pracy Jarocin.</li>
-      <li>Usługi realizowane są na podstawie indywidualnych zamówień i ustaleń z klientem.</li>
-      <li>Szczegółowe warunki realizacji usług, w tym terminy, ceny oraz ewentualne przekazanie praw autorskich (jeśli dotyczy), ustalane są indywidualnie i potwierdzane w umowie lub zamówieniu.</li>
-    </ol>
-  </section>
-
-  <section class="max-w-6xl mx-auto py-10 px-6 text-base md:text-[20px] tracking-tight text-text-gray leading-[33px]">
-    <h2 class="text-3xl md:text-4xl font-dm text-primary-200 text-center mb-12">3. Prawa i obowiązki użytkowników</h2>
-    <ol class="list-decimal ml-6 space-y-3">
-      <li>Użytkownicy Strony zobowiązani są do korzystania z niej w sposób zgodny z obowiązującym prawem, dobrymi obyczajami oraz postanowieniami niniejszego regulaminu.</li>
-      <li>Zabronione jest dostarczanie treści o charakterze bezprawnym za pośrednictwem formularzy kontaktowych lub innych narzędzi dostępnych na Stronie.</li>
-      <li>Użytkownicy mogą kontaktować się z właścicielem Strony w celu uzyskania oferty, zadania pytań lub omówienia szczegółów współpracy.</li>
-    </ol>
-  </section>
-
-  <section class="max-w-6xl mx-auto py-10 px-6 text-base md:text-[20px] tracking-tight text-text-gray leading-[33px]">
-    <h2 class="text-3xl md:text-4xl font-dm text-primary-200 text-center mb-12">4. Zasady współpracy</h2>
-    <ol class="list-decimal ml-6 space-y-3">
-      <li>Wszelkie zamówienia realizowane są na podstawie indywidualnych ustaleń pomiędzy klientem a Wytwórczo Usługową Spółdzielnią Pracy Jarocin.</li>
-      <li>Rozliczenia za wykonane usługi odbywają się na podstawie faktury VAT wystawianej przez Spółdzielnię.</li>
-      <li>Szczegółowe warunki realizacji zamówień oraz ewentualnego przekazania praw autorskich (jeśli dotyczy) określane są w umowie zawieranej z klientem.</li>
-    </ol>
-  </section>
-
-  <section class="max-w-6xl mx-auto py-10 px-6 text-base md:text-[20px] tracking-tight text-text-gray leading-[33px]">
-    <h2 class="text-3xl md:text-4xl font-dm text-primary-200 text-center mb-12">5. Ochrona danych osobowych</h2>
-    <ol class="list-decimal ml-6 space-y-3">
-      <li>Właściciel Strony przetwarza dane osobowe użytkowników zgodnie z obowiązującymi przepisami prawa, w tym Rozporządzeniem Parlamentu Europejskiego i Rady (UE) 2016/679 (RODO).</li>
-      <li>Szczegółowe informacje dotyczące przetwarzania danych osobowych znajdują się w Polityce Prywatności dostępnej na Stronie.</li>
-    </ol>
-  </section>
-
-  <section class="max-w-6xl mx-auto py-10 px-6 text-base md:text-[20px] tracking-tight text-text-gray leading-[33px]">
-    <h2 class="text-3xl md:text-4xl font-dm text-primary-200 text-center mb-12">6. Prawa własności intelektualnej</h2>
-    <ol class="list-decimal ml-6 space-y-3">
-      <li>Wszelkie materiały zamieszczone na Stronie są chronione prawami autorskimi i należą do Wytwórczo Usługowej Spółdzielni Pracy Jarocin lub zostały wykorzystane za zgodą uprawnionych podmiotów.</li>
-      <li>Kopiowanie, rozpowszechnianie lub wykorzystywanie treści ze Strony bez zgody właściciela jest zabronione.</li>
-    </ol>
-  </section>
-
-  <section class="max-w-6xl mx-auto py-10 px-6 text-base md:text-[20px] tracking-tight text-text-gray leading-[33px]">
-    <h2 class="text-3xl md:text-4xl font-dm text-primary-200 text-center mb-12">7. Odpowiedzialność</h2>
-    <ol class="list-decimal ml-6 space-y-3">
-      <li>Właściciel Strony dokłada wszelkich starań, aby treści zamieszczone na Stronie były aktualne i rzetelne, jednak nie ponosi odpowiedzialności za ich wykorzystanie przez użytkowników.</li>
-      <li>Właściciel nie odpowiada za przerwy w działaniu Strony wynikające z przyczyn technicznych lub niezależnych od niego.</li>
-    </ol>
-  </section>
-
-  <section class="max-w-6xl mx-auto py-10 px-6 text-base md:text-[20px] tracking-tight text-text-gray leading-[33px]">
-    <h2 class="text-3xl md:text-4xl font-dm text-primary-200 text-center mb-12">8. Postanowienia końcowe</h2>
-    <ol class="list-decimal ml-6 space-y-3">
-      <li>Regulamin może być zmieniany przez właściciela Strony w dowolnym czasie, a jego zmieniona wersja będzie publikowana na Stronie internetowej.</li>
-      <li>Korzystanie ze Strony po wprowadzeniu zmian oznacza akceptację nowego regulaminu.</li>
-      <li>Regulamin wchodzi w życie z dniem 19.05.2025 r.</li>
-    </ol>
-  </section>
- 
+  <!-- Content Sections -->
+  {regulationSections.map((section, index) => (
+    <section 
+      class={index === 0 ? "max-w-6xl mx-auto py-20 px-6 text-base md:text-[20px] tracking-tight text-text-gray leading-[33px]" : sectionClasses}
+      aria-labelledby={`section-${index}-heading`}
+    >
+      <h2 
+        id={`section-${index}-heading`}
+        class={headingClasses}
+      >
+        {section.title}
+      </h2>
+      
+      <ol class="list-decimal ml-6 space-y-3">
+        {section.items.map((item) => (
+          <li set:html={item} />
+        ))}
+      </ol>
+    </section>
+  ))}
 </MainLayout>
-
-<style>
-
-  /* Hide scrollbar for Chrome, Safari and Opera */
-  .no-scrollbar::-webkit-scrollbar {
-      display: none;
-  }
-
-  /* Hide scrollbar for IE, Edge and Firefox */
-  .no-scrollbar {
-      -ms-overflow-style: none;  /* IE and Edge */
-      scrollbar-width: none;  /* Firefox */
-  }
-
-</style>

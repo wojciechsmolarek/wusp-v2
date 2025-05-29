@@ -1,0 +1,267 @@
+---
+// components/structured-data.astro
+export interface StructuredDataProps {
+  pageType: 'home' | 'about' | 'contact' | 'offer' | 'gallery' | 'realizations' | 'legal'
+  pageTitle?: string
+  pageDescription?: string
+  customData?: Record<string, any>
+}
+
+const { pageType, pageTitle, pageDescription, customData = {} } = Astro.props as StructuredDataProps
+
+const currentUrl = new URL(Astro.url.pathname, Astro.site).toString()
+const origin = Astro.site?.toString().replace(/\/$/, '') || Astro.url.origin
+
+// Mapowanie segmentów URL na czytelne nazwy
+const urlNameMap: Record<string, string> = {
+  'kontakt': 'Kontakt',
+  'o-nas': 'O nas',
+  'oferta': 'Szycie tapicerki na zamówienie',
+  'park-maszynowy': 'Park maszynowy',
+  'realizacje': 'Realizacje',
+  'polityka-prywatnosci': 'Polityka prywatności',
+  'polityka-cookies': 'Polityka cookies',
+  'regulamin': 'Regulamin'
+}
+
+// Generuj breadcrumbs automatycznie
+function generateBreadcrumbs(path: string) {
+  const segments = path.split('/').filter(Boolean)
+  const breadcrumbs = [
+    { name: 'Strona główna', url: `${origin}/` }
+  ]
+
+  let currentPath = ''
+  segments.forEach((segment) => {
+    currentPath += `/${segment}`
+    const name = urlNameMap[segment] || segment.replace(/-/g, ' ')
+    breadcrumbs.push({ name, url: `${origin}${currentPath}` })
+  })
+
+  return breadcrumbs.map((item, index) => ({
+    "@type": "ListItem",
+    "position": index + 1,
+    "name": item.name,
+    "item": index === breadcrumbs.length - 1 ? undefined : item.url
+  }))
+}
+
+// Podstawowe dane organizacji (bez knowsAbout i hasOfferCatalog)
+const baseOrganizationData = {
+  "@type": "Organization",
+  "name": "Wytwórczo Usługowa Spółdzielnia Pracy Jarocin",
+  "alternateName": "WUSP Jarocin",
+  "foundingDate": "1956",
+  "description": "Szwalni tapicerki meblowej z 69-letnim doświadczeniem w produkcji pokrowców, tapicerki i wyrobów tekstylnych",
+  "url": origin,
+  "logo": `${origin}/logo-wusp.svg`,
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "ul. Wojska Polskiego 47",
+    "addressLocality": "Jarocin",
+    "postalCode": "63-200",
+    "addressRegion": "Wielkopolskie",
+    "addressCountry": "PL"
+  },
+  "contactPoint": [
+    {
+      "@type": "ContactPoint",
+      "telephone": "+48-607-442-592",
+      "email": "kontakt@wusp-jarocin.pl",
+      "contactType": "customer service",
+      "areaServed": "PL",
+      "availableLanguage": ["Polish"],
+      "hoursAvailable": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "opens": "08:00",
+        "closes": "16:00"
+      }
+    },
+    {
+      "@type": "ContactPoint",
+      "telephone": "+48-607-442-592",
+      "contactType": "sales",
+      "areaServed": "PL",
+      "availableLanguage": ["Polish"]
+    }
+  ],
+  "sameAs": ["https://meblejarocin.com"],
+  "serviceArea": {
+    "@type": "Country",
+    "name": "Polska"
+  },
+  "award": ["Certyfikat Firma Godna Zaufania"],
+  "numberOfEmployees": {
+    "@type": "QuantitativeValue",
+    "value": 50
+  },
+  "foundingLocation": {
+    "@type": "Place",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Jarocin",
+      "addressCountry": "PL"
+    }
+  }
+}
+
+// Rozszerzone dane organizacji (z knowsAbout i hasOfferCatalog)
+const fullOrganizationData = {
+  ...baseOrganizationData,
+  "knowsAbout": [
+    "Tapicerka meblowa",
+    "Szycie pokrowców",
+    "Produkcja tapicerki",
+    "Pokrowce na głośniki",
+    "Obszywanie mebli"
+  ],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Usługi tapicerskie",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Tapicerka meblowa na zamówienie",
+          "description": "Profesjonalne szycie tapicerki dla producentów mebli"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service", 
+          "name": "Pokrowce na głośniki",
+          "description": "Stylowe pokrowce zabezpieczające sprzęt akustyczny"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Obszywanie elementów meblowych", 
+          "description": "Precyzyjne obszywanie zapewniające perfekcyjne wykończenie"
+        }
+      }
+    ]
+  }
+}
+
+// Wybierz odpowiednie dane organizacji na podstawie typu strony
+const organizationData = ['legal', 'contact', 'realizations', 'gallery'].includes(pageType) 
+  ? baseOrganizationData 
+  : fullOrganizationData
+
+// Breadcrumbs dla wszystkich stron
+const breadcrumbData = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": generateBreadcrumbs(Astro.url.pathname)
+}
+
+// Konfiguracja dla różnych typów stron
+const pageConfigs = {
+  home: {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "name": "Wytwórczo Usługowa Spółdzielnia Pracy Jarocin",
+        "url": origin,
+        "publisher": {
+          "@type": "Organization",
+          "name": "Wytwórczo Usługowa Spółdzielnia Pracy Jarocin"
+        },
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": `${origin}/search?q={search_term_string}`,
+          "query-input": "required name=search_term_string"
+        }
+      },
+      organizationData
+    ]
+  },
+  
+  about: {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "name": pageTitle || "O nas - Wytwórczo Usługowa Spółdzielnia Pracy Jarocin",
+    "description": pageDescription || "Poznaj historię i wartości WUSP Jarocin - doświadczonej szwalni tapicerki meblowej",
+    "url": currentUrl,
+    "mainEntity": organizationData
+  },
+  
+  contact: {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "name": pageTitle || "Kontakt - Wytwórczo Usługowa Spółdzielnia Pracy Jarocin",
+    "description": pageDescription || "Skontaktuj się z nami w sprawie usług tapicerskich",
+    "url": currentUrl,
+    "mainEntity": organizationData
+  },
+  
+  offer: {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": pageTitle || "Szycie tapicerki na zamówienie",
+    "description": pageDescription || "Profesjonalna tapicerka meblowa, pokrowce na głośniki, obszywanie elementów meblowych",
+    "url": currentUrl,
+    "provider": organizationData,
+    "serviceType": "Tapicerka meblowa",
+    "areaServed": "Polska",
+    "offers": {
+      "@type": "Offer",
+      "availability": "https://schema.org/InStock",
+      "businessFunction": "https://schema.org/Sell"
+    }
+  },
+  
+  gallery: {
+    "@context": "https://schema.org",
+    "@type": "ImageGallery",
+    "name": pageTitle || "Park maszynowy WUSP Jarocin",
+    "description": pageDescription || "Galeria nowoczesnego parku maszynowego do produkcji tapicerki meblowej",
+    "url": currentUrl,
+    "publisher": organizationData
+  },
+  
+  realizations: {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": pageTitle || "Realizacje - WUSP Jarocin",
+    "description": pageDescription || "Galeria naszych realizacji tapicerki meblowej i pokrowców",
+    "url": currentUrl,
+    "mainEntity": organizationData
+  },
+
+  legal: {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": pageTitle || "Dokumenty prawne - WUSP Jarocin",
+    "description": pageDescription || "Polityki i regulaminy WUSP Jarocin",
+    "url": currentUrl,
+    "mainEntity": organizationData,
+    "genre": "Legal Document",
+    "about": {
+      "@type": "Thing",
+      "name": "Dokumenty prawne i polityki prywatności"
+    },
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "Wytwórczo Usługowa Spółdzielnia Pracy Jarocin",
+      "url": origin
+    },
+    "inLanguage": "pl",
+    "dateModified": new Date().toISOString().split('T')[0]
+  }
+}
+
+// Połącz dane strony z customData
+const pageData = { ...pageConfigs[pageType], ...customData }
+
+// Structured data - tylko breadcrumbs i dane strony
+const allStructuredData = [breadcrumbData, pageData]
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(allStructuredData)} />

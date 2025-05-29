@@ -1,0 +1,66 @@
+---
+export interface BannerProps {
+  title: string
+  breadcrumbText?: string
+}
+
+const { title, breadcrumbText = title } = Astro.props as BannerProps
+
+// Decorative elements data
+const decorativeElements = [
+  { size: "w-32 h-32", position: "top-10 left-10", opacity: "bg-white/10", blur: "blur-xl" },
+  { size: "w-24 h-24", position: "top-20 right-20", opacity: "bg-white/20", blur: "blur-lg" },
+  { size: "w-16 h-16", position: "bottom-32 left-1/4", opacity: "bg-white/15", blur: "blur-md" }
+];
+---
+
+<section 
+  class="relative w-full bg-gradient-to-br from-primary-200 via-primary-100 to-primary-300 h-[400px] lg:h-[450px] flex justify-center items-end overflow-hidden"
+  role="banner"
+  aria-labelledby="page-title"
+>
+  <!-- Decorative Background Elements -->
+  {decorativeElements.map((element) => (
+    <div 
+      class={`absolute ${element.position} ${element.size} ${element.opacity} rounded-full ${element.blur}`} 
+      aria-hidden="true"
+    />
+  ))}
+  
+  <!-- Content Container -->
+  <div class="relative py-[40px] lg:py-[50px] px-[30px] lg:px-[152px] flex flex-col justify-center items-center bg-white rounded-tl-[37px] rounded-tr-[37px] gap-4 shadow-2xl max-w-5xl mx-4">
+    <h1 
+      id="page-title"
+      class="text-[28px] leading-[36px] lg:text-[50px] lg:leading-[62px] font-dm text-primary-200 text-center"
+    >
+      {title}
+    </h1>
+    
+    <nav 
+      class="text-sm lg:text-[18px] lg:leading-[33px] tracking-tight font-jost text-text-gray" 
+      aria-label="Ścieżka nawigacji"
+      role="navigation"
+    >
+      <ol class="flex items-center justify-center flex-wrap gap-1 lg:gap-2">
+        <li>
+          <a 
+            href="/" 
+            class="hover:text-primary-200 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-200 focus:ring-offset-2 rounded-sm px-1"
+            aria-label="Przejdź do strony głównej"
+          >
+            Strona główna
+          </a>
+        </li>
+        <li class="text-primary-200 mx-1 lg:mx-2" aria-hidden="true">•</li>
+        <li>
+          <span 
+            class="text-text-gray"
+            aria-current="page"
+          >
+            {breadcrumbText}
+          </span>
+        </li>
+      </ol>
+    </nav>
+  </div>
+</section>

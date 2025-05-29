@@ -1,43 +1,41 @@
 ---
-import MainLayout from '../layouts/main-layout.astro'
-import ContactInfo from '../components/contact-box.tsx'
-import ContactForm from '../components/contact-form.astro'
+import MainLayout from '../layouts/main-layout.astro';
+import StructuredData from '../components/structured-data.astro';
+import PageBanner from '../components/page-banner.astro';
+
+import ContactInfo from '../components/contact-box.tsx';
+import ContactForm from '../components/contact-form.astro';
 ---
 
+<MainLayout 
+  title="Kontakt - Wytwórczo Usługowa Spółdzielnia Pracy" 
+  description="Skontaktuj się z nami, aby uzyskać więcej informacji o naszych usługach tapicerskich i projektach. Jesteśmy tutaj, aby Ci pomóc!"
+>
 
-<MainLayout title = 'Kontakt' description = 'Skontaktuj się z nami, aby uzyskać więcej informacji o naszych usługach i projektach. Jesteśmy tutaj, aby Ci pomóc!'>
+  <!-- Structured Data -->
+  <StructuredData 
+    pageType="contact"
+  />
 
   <!-- Banner Section -->
+  <PageBanner 
+    title="Kontakt" 
+    breadcrumbText="Kontakt"
+  />
 
-  <section class="w-full bg-contact h-[350px] flex justify-center items-end">
-    <div class="py-[30px] lg:py-[41px] px-[60px] lg:px-[152px] flex flex-col justify-center items-center bg-white rounded-tl-[37px] rounded-tr-[37px] gap-2.5">
-      <h1 class="text-[30px] leading-[40px] lg:text-[50px] lg:leading-[62px] font-dm capitalize text-primary-200 ">Kontakt</h1>
-      <span class="text-base lg:text-[18px] lg:leading-[33px] tracking-tight font-jost text-text-gray"> <a href="/">Strona główna</a> / Kontakt</span>
+  <!-- Main Section -->
+  <section 
+    class="lg:max-w-[1200px] px-12 xl:px-0 w-full mx-auto flex flex-col gap-8 lg:gap-10"
+    aria-labelledby="contact-section-title"
+  >
+    <div class="sr-only">
+      <span id="contact-section-title">Formularz kontaktowy i informacje</span>
+    </div>
+    
+    <div class="grid grid-cols-1 gap-[55px] pt-20 lg:grid-cols-2 place-content-center">
+      <ContactInfo client:load />
+      <ContactForm />
     </div>
   </section>
 
-  <!-- Main Section -->
-
-	<section class="lg:max-w-[1200px] flex flex-col gap-8 lg:gap-10 px-12 xl:px-0 w-full mx-auto">
-    <div class="grid grid-cols-1 gap-[55px] pt-20 lg:grid-cols-2 place-content-center">
-      <ContactInfo />
-      <ContactForm />
-    </div>
-	</section>
-
 </MainLayout>
-
-<style>
-
-  /* Hide scrollbar for Chrome, Safari and Opera */
-  .no-scrollbar::-webkit-scrollbar {
-      display: none;
-  }
-
-  /* Hide scrollbar for IE, Edge and Firefox */
-  .no-scrollbar {
-      -ms-overflow-style: none;  /* IE and Edge */
-      scrollbar-width: none;  /* Firefox */
-  }
-
-</style>

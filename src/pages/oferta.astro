@@ -1,119 +1,350 @@
 ---
-import MainLayout from '../layouts/main-layout.astro'
-import One from "../icons/one.tsx"
-import Two from "../icons/two.tsx"
-import Three from "../icons/three.tsx"
-import Four from "../icons/four.tsx"
-import ServiceIconOne from "../icons/service1-icon.tsx"
-import ServiceIconTwo from "../icons/service2-icon.tsx"
-import ServiceIconThree from "../icons/service3-icon.tsx"
-import ServiceIconFour from "../icons/service4-icon.tsx"
+import MainLayout from '../layouts/main-layout.astro';
+import StructuredData from '../components/structured-data.astro';
+import PageBanner from '../components/page-banner.astro';
 
+import One from "../icons/one.tsx";
+import Two from "../icons/two.tsx";
+import Three from "../icons/three.tsx";
+import Four from "../icons/four.tsx";
+import ServiceIconOne from "../icons/service1-icon.tsx";
+import ServiceIconTwo from "../icons/service2-icon.tsx";
+import ServiceIconThree from "../icons/service3-icon.tsx";
+import ServiceIconFour from "../icons/service4-icon.tsx";
+import { Picture } from "astro:assets";
 
+// Common CSS classes for reusability
+const containerClasses = "lg:max-w-[1200px] px-12 xl:px-0 w-full mx-auto";
+const sectionSpacing = "pt-[100px] lg:pt-[150px]";
+
+// Services data
 const services = [
-	{
-		title: 'Project Plan',
-		text: 'There are many variations of the passages of lorem Ipsum from available, majority.'
-	},
-	{
-		title: 'Interior Work',
-		text: 'There are many variations of the passages of lorem Ipsum from available, majority.'
-	},
-	{
-		title: 'Realization',
-		text: 'There are many variations of the passages of lorem Ipsum from available, majority.'
-	},
-	{
-		title: '2d/3d Art Work',
-		text: 'There are many variations of the passages of lorem Ipsum from available, majority.'
-	},
-	{
-		title: 'Retail design',
-		text: 'There are many variations of the passages of lorem Ipsum from available, majority.'
-	},
-	{
-		title: 'Decoration Work',
-		text: 'There are many variations of the passages of lorem Ipsum from available, majority.'
-	},
-]
+  {
+    title: 'Tapicerka meblowa na zamówienie',
+    text: 'Zwiększcie atrakcyjność swoich mebli dzięki profesjonalnej tapicerce, która zachwyci Waszych klientów i podniesie wartość produktów.'
+  },
+  {
+    title: 'Pokrowce na głośniki',
+    text: 'Zabezpieczcie sprzęt akustyczny stylowymi pokrowcami, które nie tylko chronią, ale też nadają profesjonalny wygląd.'
+  },
+  {
+    title: 'Obszywanie elementów meblowych',
+    text: 'Oszczędzajcie czas i koszty, zlecając nam precyzyjne obszywanie, które gwarantuje perfekcyjne wykończenie.'
+  },
+  {
+    title: 'Szycie pokrowców ochronnych',
+    text: 'Profesjonalne pokrowce szyte według indywidualnych specyfikacji, które zapewnią optymalną ochronę Waszych produktów.'
+  },
+  {
+    title: 'Produkcja seryjna i prototypowa',
+    text: 'Od pojedynczych prototypów po duże serie produkcyjne - realizujemy projekty w każdej skali z zachowaniem najwyższej jakości.'
+  },
+  {
+    title: 'Usługi krawieckie dla przemysłu',
+    text: 'Kompleksowe usługi szycia dla fabryk mebli, zakładów produkcyjnych i firm tapicerskich wymagających profesjonalnego partnera.'
+  },
+];
 
+// Benefits data
+const benefits = [
+  {
+    title: 'Szybkie prototypowanie nowych projektów',
+    description: 'Realizujemy prototypy w kilka roboczych, umożliwiając błyskawiczne testowanie nowych kolekcji i wprowadzanie innowacji na rynek przed konkurencją.'
+  },
+  {
+    title: 'Kompleksowa logistyka i transport',
+    description: 'Organizujemy transport gotowych produktów bezpośrednio do Waszych magazynów lub klientów końcowych, oszczędzając Wam czas i koszty logistyczne.'
+  },
+  {
+    title: 'Lokalna dostępność i szybka reakcja',
+    description: 'Działając w Jarocinie, jesteśmy w zasięgu 2-3 godzin jazdy od głównych ośrodków przemysłowych Polski, co oznacza możliwość pilnych dostaw i osobistych konsultacji.'
+  }
+];
+
+// How we work process data
 const howWeWorkDetails = [
   {
     imgIcon: ServiceIconOne,
     numIcon: One,
     img: '/service1.png',
-    title: 'Concept & Details',
-    info:'It is a long established fact  will be distracted. Lorem Ipsum is simply dummy from text of the and typesetting indufstry.'
-
+    title: 'Analiza potrzeb i specyfikacja',
+    info: 'Dokładnie analizujemy Wasze wymagania i tworzymy szczegółową specyfikację projektu. Dzięki temu każdy element tapicerki jest idealnie dopasowany do Waszych potrzeb biznesowych.'
   },
   {
     imgIcon: ServiceIconTwo,
     numIcon: Two,
     img: '/service2.png',
-    title: 'Idea For Work',
-    info:'It is a long established fact  will be distracted. Lorem Ipsum is simply dummy from text of the and typesetting indufstry.'
-
+    title: 'Projektowanie i prototypowanie',
+    info: 'Nasz doświadczony zespół projektuje rozwiązania i tworzy prototypy, które pozwalają zweryfikować jakość i funkcjonalność przed rozpoczęciem produkcji seryjnej.'
   },
   {
     imgIcon: ServiceIconThree,
     numIcon: Three,
     img: '/service3.png',
-    title: 'Design',
-    info:'It is a long established fact  will be distracted. Lorem Ipsum is simply dummy from text of the and typesetting indufstry.'
-
+    title: 'Produkcja z wykorzystaniem nowoczesnych maszyn',
+    info: 'Wykorzystujemy nowoczesny park maszynowy do precyzyjnego szycia tapicerki meblowej i pokrowców według najwyższych standardów jakości.'
   },
   {
     imgIcon: ServiceIconFour,
     numIcon: Four,
     img: '/service4.png',
-    title: 'Perfection',
-    info:'It is a long established fact  will be distracted. Lorem Ipsum is simply dummy from text of the and typesetting indufstry.'
-
+    title: 'Kontrola jakości i terminowa dostawa',
+    info: 'Każdy produkt przechodzi rygorystyczną kontrolę jakości. Gwarantujemy terminową dostawę, która pozwoli Wam dotrzymać zobowiązań wobec Waszych klientów.'
   },
-]
+];
+
+// Stats data for overlay
+const stats = [
+  { value: "69", label: "Lat doświadczenia" },
+  { value: "50+", label: "Zatrudnionych osób" }
+];
 ---
 
+<MainLayout 
+  title="Oferta - Szycie tapicerki na zamówienie | WUSP Jarocin" 
+  description="Profesjonalna tapicerka meblowa na zamówienie. Pokrowce na głośniki, obszywanie elementów meblowych, produkcja seryjna i prototypowa."
+>
 
-<MainLayout title = 'Interior Design Services'>
+  <!-- Structured Data -->
+  <StructuredData 
+    pageType="offer"
+  />
 
   <!-- Banner Section -->
+  <PageBanner 
+    title="Szycie tapicerki na zamówienie" 
+    breadcrumbText="Szycie tapicerki na zamówienie"
+  />
 
-  <section class="w-full bg-services h-[350px] flex justify-center items-end">
-    <div class="py-[30px] lg:py-[41px] px-[60px] lg:px-[152px] flex flex-col justify-center items-center bg-white rounded-tl-[37px] rounded-tr-[37px] gap-2.5">
-      <h1 class="text-[30px] leading-[40px] lg:text-[50px] lg:leading-[62px] font-dm text-primary-200 ">Oferta</h1>
-      <span class="text-base lg:text-[18px] lg:leading-[33px] tracking-tight font-jost text-text-gray"> <a href="/">Strona główna</a> / Oferta</span>
+  <!-- About Section -->
+  <section
+    class={`${containerClasses} pt-[70px] lg:pt-[100px]`}
+    aria-labelledby="about-heading"  
+  >
+    <h2 
+      id="about-heading"
+      class="font-dm tracking-wide text-center leading-[37px] lg:leading-[62.50px] text-[30px] lg:text-[50px] w-full lg:max-w-[50%] pb-5 mx-auto"
+    >
+      Profesjonalna tapicerka meblowa dla Waszego biznesu
+    </h2>
+    
+    <p class="text-base md:text-[20px] text-center tracking-tight text-text-gray leading-[33px] lg:max-w-[60%] mx-auto">
+      Wytwórczo Usługowa Spółdzielnia Pracy Jarocin to doświadczona <strong>szwalnia usługowa</strong>, która od lat pomaga firmom z całej Polski rozwijać swój biznes dzięki profesjonalnej tapicerce meblowej. Jesteśmy Waszym niezawodnym partnerem w produkcji wysokiej jakości pokrowców, tapicerki na zamówienie oraz elementów tekstylnych, które wyróżnią Wasze produkty na rynku.
+    </p>
+    
+    <p class="text-base md:text-[20px] text-center tracking-tight text-text-gray leading-[33px] lg:max-w-[60%] mx-auto py-4">
+      Współpracujemy z producentami mebli, łóżek, sof oraz firmami z branży akustycznej, oferując im przewagę konkurencyjną dzięki precyzyjnemu wykonaniu i terminowej realizacji. Nasze usługi krawieckie i produkcja tapicerki meblowej pozwalają Waszym klientom cieszyć się wyjątkową jakością i trwałością produktów.
+    </p>
+    
+    <!-- CTA Box -->
+    <div class="bg-primary-300 p-6 rounded-2xl border-l-4 border-primary-200 mt-6 lg:max-w-[60%] mx-auto py-4">
+      <p class="text-base md:text-[20px] text-center tracking-tight text-text-gray leading-[33px]">
+        <strong class="text-primary-200">Dodatkowo dla klientów detalicznych</strong> uruchomiliśmy sklep internetowy 
+        <a 
+          href="https://meblejarocin.com/" 
+          class="text-primary-200 hover:text-primary-100 underline font-bold text-lg transition-colors duration-200"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Odwiedź sklep meblejarocin.com (otwiera się w nowej karcie)"
+        >
+          meblejarocin.com
+        </a>, gdzie każdy może znaleźć gotowe rozwiązania meblowe w atrakcyjnych cenach.
+      </p>
+    </div>      
+  </section>
+
+  <!-- Services Section -->
+  <section 
+    class={`${containerClasses} ${sectionSpacing}`}
+    aria-labelledby="services-heading"
+  >
+    <h2 
+      id="services-heading"
+      class="font-dm text-[30px] lg:text-[42px] leading-tight text-primary-200 mb-12 text-center"
+    >
+      Zakres naszych usług
+    </h2>
+  
+    <div class="space-y-6">
+      {services.map((service, index) => (
+        <article class="flex gap-6 p-6 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
+          <div class="flex-shrink-0 w-12 h-12 bg-primary-300 rounded-full flex items-center justify-center">
+            <span class="text-primary-200 font-dm font-bold text-lg">{index + 1}</span>
+          </div>
+          <div>
+            <h3 class="text-text-blue font-dm text-xl lg:text-2xl mb-3">{service.title}</h3>
+            <p class="text-text-gray leading-relaxed">{service.text}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+  
+  <!-- Why Choose Us Section -->
+  <section 
+    class={`w-full ${sectionSpacing} px-12 lg:px-0 mx-auto lg:max-w-[1200px]`}
+    aria-labelledby="why-choose-heading"
+  >
+    <div class="w-full flex flex-col-reverse lg:flex-row justify-between gap-10 items-center">
+      <div class="flex flex-col gap-6">
+        <h2 
+          id="why-choose-heading"
+          class="text-[30px] text-center lg:text-left font-dm tracking-wide leading-8 md:leading-[62.50px] md:text-[50px] text-text-blue"
+        >
+          Dlaczego warto z nami współpracować
+        </h2>
+        
+        <p class="text-base md:text-[22px] lg:max-w-[85%] text-center lg:text-left tracking-tight font-jost text-text-gray leading-[33px]">
+          Dzięki <a 
+            href="/park-maszynowy" 
+            class="text-primary-200 hover:text-primary-100 underline transition-colors duration-200"
+            aria-label="Poznaj nasz park maszynowy"
+          >
+            nowoczesnemu parkowi maszynowemu
+          </a> i doświadczonemu zespołowi specjalistów realizujemy nawet najbardziej wymagające projekty w rekordowym czasie.
+        </p>
+        
+        <!-- Benefits List -->
+        <div class="space-y-4 mt-4">
+          {benefits.map((benefit) => (
+            <div class="flex items-start gap-3">
+              <div class="flex-shrink-0 w-6 h-6 bg-primary-300 rounded-full flex items-center justify-center mt-1">
+                <div class="w-2 h-2 bg-primary-200 rounded-full"></div>
+              </div>
+              <div>
+                <h3 class="font-dm text-base lg:text-2xl mb-1">{benefit.title}</h3>
+                <p class="text-base md:text-[18px] font-jost text-text-gray leading-relaxed">{benefit.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+        
+        <!-- CTA Button -->
+        <div class="pt-4">
+          <a 
+            href="/kontakt" 
+            class="inline-flex items-center gap-2 bg-primary-200 hover:bg-primary-100 text-white px-8 py-4 rounded-full font-medium transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-primary-200 focus:ring-offset-2"
+            aria-label="Przejdź do strony kontaktowej"
+          >
+            Skontaktuj się z nami
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+      
+      <!-- Image with Stats Overlay -->
+      <div class="overflow-hidden">
+        <div class="relative">
+          <Picture 
+            formats={['avif', 'webp']}
+            src="/imgs/magazyn-krawiecki.webp"
+            alt="Nowoczesny magazyn krawiecki - profesjonalna tapicerka meblowa"
+            width={658}
+            height={493}
+            class="w-full h-auto hover:scale-105 transition-transform duration-700 rounded-2xl"
+            loading="lazy"
+          />
+          
+          <!-- Stats Overlay -->
+          <div class="absolute bottom-4 left-4 right-4">
+            <div class="bg-white/90 backdrop-blur-sm rounded-xl p-4">
+              <div class="grid grid-cols-2 gap-3">
+                {stats.map((stat) => (
+                  <div class="text-center">
+                    <div class="text-xl font-dm font-bold text-primary-200">{stat.value}</div>
+                    <div class="text-xs text-text-gray">{stat.label}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
-  	<!-- Services Section -->
+  <!-- How We Work Section -->
+  <section 
+    class="px-12 xl:px-0 w-full mt-[100px] lg:mt-[200px] min-h-screen"
+    aria-labelledby="process-heading"
+  >
+    <div class="w-full lg:max-w-[1200px] p-12 mx-auto lg:px-[116px] lg:py-[160px] bg-primary-300 rounded-[70px]">
+      <h2 
+        id="process-heading"
+        class="font-dm tracking-wide text-center leading-[37px] lg:leading-[62.50px] text-[30px] lg:text-[50px] w-full capitalize lg:max-w-[50%] pb-2 mx-auto"
+      >
+        Jak realizujemy zamówienia
+      </h2>
+      
+      <p class="text-base md:text-[22px] text-center tracking-tight font-jost text-text-gray leading-[33px] lg:max-w-[60%] mx-auto">
+        Nasz sprawdzony proces realizacji zamówień gwarantuje najwyższą jakość tapicerki meblowej i terminowość dostaw. Zobacz, jak profesjonalnie podchodzimy do każdego projektu.
+      </p>
 
-	<section class="lg:max-w-[1200px] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10 lg:gap-y-12 xl:px-0 w-full mx-auto pt-[100px] lg:pt-[200px] justify-between ">
-		{
-			services.map((service) => {
-				return (
-					<div class="w-full col-span-1 max-w-[358px] mx-auto flex rounded-[30px] hover:bg-primary-300 px-5 py-[83px] flex-col justify-center items-center gap-3 md:gap-5">
-						<h3 class="text-text-blue font-dm text-[22px] md:text-[25px] leading-loose">{service.title}</h3>
-						<p class="text-base md:text-[22px] tracking-tight font-jost text-text-gray leading-[33px] text-center"> {service.text}</p>
-						
-					</div>
-				)
-			})
-		}
-	</section>
+      <!-- Process Steps -->
+      <div class="pt-[70px] lg:pt-[100px] flex flex-col gap-[70px]">
+        {howWeWorkDetails.map((detail, index) => {
+          const ImageIcon = detail.imgIcon;
+          const NumberIcon = detail.numIcon;
+          const isReverse = index % 2 !== 0;
+          
+          return (
+            <article 
+              class={`flex justify-between flex-col ${isReverse ? 'lg:flex-row-reverse' : 'lg:flex-row'} gap-[50px] items-center max-w-[967px]`}
+              aria-labelledby={`step-${index + 1}-title`}
+            >
+              <img 
+                src={detail.img} 
+                alt={`Krok ${index + 1}: ${detail.title}`}
+                loading="lazy"
+                width="400"
+                height="300"
+              />
+              
+              <div class="flex flex-col gap-12 lg:gap-[58px]">
+                <div class="justify-between hidden lg:flex">
+                  <ImageIcon />
+                  <NumberIcon />
+                </div>
+                
+                <div class="flex flex-col gap-3">
+                  <h3 
+                    id={`step-${index + 1}-title`}
+                    class="text-text-blue font-dm text-[22px] md:text-[25px] leading-loose"
+                  >
+                    {detail.title}
+                  </h3>
+                  <p class="text-base md:text-[22px] tracking-tight font-jost text-text-gray leading-[33px]">
+                    {detail.info}
+                  </p>
+                </div>
+              </div>
+            </article>
+          );
+        })}
+      </div>
+    </div>
+  </section>
 
+  <!-- Schema.org structured data for better SEO -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Szycie tapicerki na zamówienie",
+      "description": "Profesjonalna tapicerka meblowa, pokrowce na głośniki, obszywanie elementów meblowych",
+      "provider": {
+        "@type": "Organization",
+        "name": "Wytwórczo Usługowa Spółdzielnia Pracy Jarocin",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Jarocin",
+          "addressCountry": "PL"
+        }
+      },
+      "serviceType": "Tapicerka meblowa",
+      "areaServed": "Polska"
+    }
+  </script>
 </MainLayout>
-
-<style>
-
-  /* Hide scrollbar for Chrome, Safari and Opera */
-  .no-scrollbar::-webkit-scrollbar {
-      display: none;
-  }
-
-  /* Hide scrollbar for IE, Edge and Firefox */
-  .no-scrollbar {
-      -ms-overflow-style: none;  /* IE and Edge */
-      scrollbar-width: none;  /* Firefox */
-  }
-
-</style>

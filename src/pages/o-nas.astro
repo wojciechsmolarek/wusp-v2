@@ -1,144 +1,238 @@
 ---
-import MainLayout from '../layouts/main-layout.astro'
-import QuoteText from '../components/quote.tsx'
-import  Facebook  from '../icons/facebook.tsx';
-import  Twitter  from '../icons/twitter.tsx';
-import  LinkedIn  from '../icons/linkedin.tsx';
-import Instagram  from '../icons/instagram.tsx';
-import { Picture } from "astro:assets";
+import MainLayout from '../layouts/main-layout.astro';
+import StructuredData from '../components/structured-data.astro';
+import PageBanner from '../components/page-banner.astro';
+
+import QuoteText from '../components/quote.tsx';
+import Facebook from '../icons/facebook.tsx';
+import Twitter from '../icons/twitter.tsx';
+import LinkedIn from '../icons/linkedin.tsx';
+import Instagram from '../icons/instagram.tsx';
+import { Image } from "astro:assets";
+
+// Common CSS classes for reusability
+const containerClasses = "w-full px-12 lg:px-0 mx-auto lg:max-w-[1200px]";
+const sectionSpacing = "pt-[100px] lg:pt-[150px]";
+const headingClasses = "text-[30px] text-center lg:text-left font-dm tracking-wide leading-8 md:leading-[62.50px] md:text-[50px] text-text-blue";
+const textClasses = "text-base md:text-[22px] text-center lg:text-left tracking-tight font-jost text-text-gray leading-[33px]";
+
+// Content sections data for better maintainability
+const contentSections = [
+  {
+    title: "Czym się zajmujemy?",
+    text: "Specjalizujemy się w szyciu pokrowców, tapicerki i wyrobów tekstylnych dla producentów mebli i branży akustycznej. Realizujemy zamówienia seryjne oraz nietypowe projekty dla firm z całej Polski.",
+    image: {
+      src: "/imgs/walki-materialu.webp",
+      alt: "Wałki materiału do szycia pokrowców",
+      width: 659,
+      height: 377
+    },
+    layout: "normal",
+    gap: "gap-10",
+    textMaxWidth: "lg:max-w-[85%]"
+  },
+  {
+    title: "Efekt końcowy",
+    text: "Dostarczamy wyroby tekstylne i tapicerskie, które spełniają najwyższe standardy jakości, terminowości i precyzji wykonania – zawsze zgodnie z oczekiwaniami naszych klientów biznesowych.",
+    image: {
+      src: "/imgs/uszyte-siedzisko.webp",
+      alt: "Uszyte siedzisko - gotowy produkt",
+      width: 659,
+      height: 377
+    },
+    layout: "reverse",
+    gap: "gap-24",
+    textMaxWidth: "lg:max-w-[95%]"
+  },
+  {
+    title: "Firma z licznymi wyróżnieniami",
+    text: 'Możemy pochwalić się prestiżowymi certyfikatami „Firma Godna Zaufania". Certyfikaty te przyznawane są przedsiębiorstwom, które wyróżniają się rzetelnością, wysoką jakością usług oraz pozytywną opinią wśród klientów i partnerów biznesowych.',
+    image: {
+      src: "/imgs/certyfikaty-wusp-jarocin.webp",
+      alt: "Certyfikaty i dyplomy WUSP Jarocin",
+      width: 659,
+      height: 377
+    },
+    layout: "normal",
+    gap: "gap-10",
+    textMaxWidth: "lg:max-w-[85%]"
+  }
+];
+
+// Social media links data
+const socialLinks = [
+  { component: Facebook, href: "/", label: "Facebook" },
+  { component: Twitter, href: "/", label: "Twitter" },
+  { component: LinkedIn, href: "/", label: "LinkedIn" },
+  { component: Instagram, href: "/", label: "Instagram" }
+];
+
+// Team member data
+const teamMember = {
+  name: "Nattasha Julie",
+  position: "Design, Australia",
+  phone: "+1 (378) 400-1234",
+  email: "julie@email.com"
+};
+
+// Team images data
+const teamImages = [
+  { src: "/person1.png", alt: "Członek zespołu 1" },
+  { src: "/person2.png", alt: "Członek zespołu 2" },
+  { src: "/person3.png", alt: "Członek zespołu 3" }
+];
 ---
 
-<MainLayout title = 'O nas' description = 'Sprawdź, co nas wyróżnia i dlaczego warto nam zaufać. Nasze doświadczenie to gwarancja jakości każdego zamówienia.'>
+<MainLayout 
+  title="O nas - Wytwórczo Usługowa Spółdzielnia Pracy Jarocin" 
+  description="Sprawdź, co nas wyróżnia i dlaczego warto nam zaufać. Nasze doświadczenie to gwarancja jakości każdego zamówienia."
+>
+
+  <!-- Structured Data -->
+  <StructuredData 
+    pageType="about"
+  />
+
   <!-- Banner Section -->
-  <section class="w-full bg-about h-[350px] flex justify-center items-end">
-    <div class="py-[30px] lg:py-[41px] px-[60px] lg:px-[152px] flex flex-col justify-center items-center bg-white rounded-tl-[37px] rounded-tr-[37px] gap-2.5">
-      <h1 class="text-[30px] leading-[40px] lg:text-[50px] lg:leading-[62px] font-dm text-primary-200 ">O nas</h1>
-      <span class="text-base lg:text-[18px] lg:leading-[33px] tracking-tight font-jost text-text-gray"> <a href="/">Strona główna</a> / O nas</span>
-    </div>
-  </section>
+  <PageBanner 
+    title="O nas" 
+    breadcrumbText="O nas"
+  />
 
   <!-- Quote Section -->
-
-  <section class="w-full px-12 lg:px-0 pt-[100px] lg:pt-[200px] lg:max-w-[1200px] mx-auto flex items-center justify-center">
-    <QuoteText text="Nasze doświadczenie to gwarancja jakości każdego zamówienia." name="WUSP Jarocin"/>
+  <section 
+    class="w-full px-12 lg:px-0 pt-[100px] lg:pt-[200px] lg:max-w-[1200px] mx-auto flex items-center justify-center"
+    aria-label="Cytat firmowy"
+  >
+    <QuoteText 
+      text="Nasze doświadczenie to gwarancja jakości każdego zamówienia." 
+      name="WUSP Jarocin"
+      client:load
+    />
   </section>
 
-  <!-- What We Do Section -->
-
-  <section class="w-full pt-[100px] lg:pt-[150px] px-12 lg:px-0 mx-auto lg:max-w-[1200px] ">
-    <div class="w-full flex flex-col-reverse lg:flex-row justify-between gap-10 items-center">
-      <div class="flex flex-col gap-6">
-        <span class="text-[30px] text-center lg:text-left font-dm tracking-wide leading-8 md:leading-[62.50px] md:text-[50px] text-text-blue ">Czym się zajmujemy?</span>
-        <p class="text-base md:text-[22px] lg:max-w-[85%] text-center lg:text-left tracking-tight font-jost text-text-gray leading-[33px]">Specjalizujemy się w szyciu pokrowców, tapicerki i wyrobów tekstylnych dla producentów mebli i branży akustycznej. Realizujemy zamówienia seryjne oraz nietypowe projekty dla firm z całej Polski.</p>
+  <!-- Content Sections -->
+  {contentSections.map((section, index) => (
+    <section 
+      class={`${containerClasses} ${sectionSpacing}`}
+      aria-labelledby={`section-${index}-title`}
+    >
+      <div class={`w-full flex flex-col-reverse ${section.layout === 'reverse' ? 'lg:flex-row-reverse' : 'lg:flex-row'} justify-between ${section.gap} items-center`}>
+        <div class="flex flex-col gap-6">
+          <h2 
+            id={`section-${index}-title`}
+            class={headingClasses}
+          >
+            {section.title}
+          </h2>
+          <p class={`${textClasses} ${section.textMaxWidth}`}>
+            {section.text}
+          </p>
+        </div>
+        
+        <div class="overflow-hidden">
+          <Image 
+            src={section.image.src}
+            alt={section.image.alt}
+            width={section.image.width}
+            height={section.image.height}
+            class="w-full h-auto hover:scale-105 transition-transform duration-700 rounded-2xl"
+            loading="lazy"
+          />
+        </div>
       </div>
-      <div class="overflow-hidden">
-        <Picture 
-          formats={['avif', 'webp']}
-          src="/imgs/walki-materialu.webp"
-          alt="Wałki materiału do szycia pokrowców"
-          width="659"
-          height="377"
-          class="w-full h-auto hover:scale-105 transition-transform duration-700 rounded-2xl"
+    </section>
+  ))}
+
+  <!-- Team Section -->
+  <section 
+    class="w-full py-[100px] lg:py-[185px] mt-[173px] px-12 lg:px-0 mx-auto bg-primary-300"
+    aria-labelledby="team-title"
+  >
+    <div class="w-full flex flex-col gap-10 lg:max-w-[1200px] mx-auto">
+      <h2 
+        id="team-title"
+        class="font-dm tracking-wide text-center leading-[37px] lg:leading-[62.50px] text-[30px] lg:text-[50px] w-full lg:max-w-[50%] pb-9 mx-auto"
+      >
+        Nasz zespół
+      </h2>
+      
+      <div 
+        class="flex w-full overflow-x-scroll gap-4 flex-row no-scrollbar"
+        role="region"
+        aria-label="Galeria zespołu"
+      >
+        <!-- First Team Image -->
+        <img 
+          src={teamImages[0].src} 
+          alt={teamImages[0].alt}
+          class="flex-shrink-0"
           loading="lazy"
+          width="284"
+          height="400"
         />
-      </div>
-    </div>
-  </section>
-
-  <!-- The End Result Section -->
-
-   <section class="w-full pt-[100px] lg:pt-[150px] px-12 lg:px-0 mx-auto lg:max-w-[1200px] ">
-    <div class="w-full flex flex-col-reverse lg:flex-row-reverse justify-between gap-24 items-center">
-      <div class="flex flex-col gap-6">
-        <span class="text-[30px] text-center lg:text-left font-dm tracking-wide leading-8 md:leading-[62.50px] md:text-[50px] text-text-blue ">Efekt końcowy</span>
-        <p class="text-base md:text-[22px] lg:max-w-[95%] text-center lg:text-left tracking-tight font-jost text-text-gray leading-[33px]">Dostarczamy wyroby tekstylne i tapicerskie, które spełniają najwyższe standardy jakości, terminowości i precyzji wykonania – zawsze zgodnie z oczekiwaniami naszych klientów biznesowych.</p>
-      </div>
-      <div class="overflow-hidden">
-        <Picture 
-          formats={['avif', 'webp']}
-          src="/imgs/uszyte-siedzisko.webp"
-          alt="Uszyte siedzisko - gotowy produkt"
-          width="659"
-          height="377"
-          class="w-full h-auto hover:scale-105 transition-transform duration-700 rounded-2xl"
+        
+        <!-- Second Team Image -->
+        <img 
+          src={teamImages[1].src} 
+          alt={teamImages[1].alt}
+          class="flex-shrink-0"
           loading="lazy"
+          width="284"
+          height="400"
         />
-      </div>
-    </div>
-  </section>
-
-    <!-- Cert -->
-
-  <section class="w-full pt-[100px] lg:pt-[150px] px-12 lg:px-0 mx-auto lg:max-w-[1200px] ">
-    <div class="w-full flex flex-col-reverse lg:flex-row justify-between gap-10 items-center">
-      <div class="flex flex-col gap-6">
-        <span class="text-[30px] text-center lg:text-left font-dm tracking-wide leading-8 md:leading-[62.50px] md:text-[50px] text-text-blue ">Firma z licznymi wyróżnieniami</span>
-        <p class="text-base md:text-[22px] lg:max-w-[85%] text-center lg:text-left tracking-tight font-jost text-text-gray leading-[33px]">Możemy pochwalić się prestiżowymi certyfikatami „Firma Godna Zaufania". Certyfikaty te przyznawane są przedsiębiorstwom, które wyróżniają się rzetelnością, wysoką jakością usług oraz pozytywną opinią wśród klientów i partnerów biznesowych.</p>
-      </div>
-      <div class="overflow-hidden">
-        <Picture 
-          formats={['avif', 'webp']}
-          src="/imgs/certyfikaty-wusp-jarocin.webp"
-          alt="Certyfikaty i dyplomy WUSP Jarocin"
-          width="659"
-          height="377"
-          class="w-full h-auto hover:scale-105 transition-transform duration-700 rounded-2xl"
-          loading="lazy"
-        />
-      </div>
-    </div>
-  </section>
-
-  <!-- What People Think About Us Section -->
-
-  <section class="w-full py-[100px] lg:py-[185px] mt-[173px] px-12 lg:px-0 mx-auto bg-primary-300 ">
-    <div class="w-full flex flex-col gap-10 lg:max-w-[1200px] mx-auto" >
-		  <span class="font-dm tracking-wide text-center leading-[37px] lg:leading-[62.50px] text-[30px] lg:text-[50px] w-full lg:max-w-[50%] pb-9 mx-auto">Nasz zespół</span>
-      <div class="flex w-full overflow-x-scroll gap-4 flex-row no-scrollbar">
-        <img src="/person1.png" alt="">
-        <img src="/person2.png" alt="">
-        <div class="flex flex-col gap-10 w-full justify-between py-[70px] px-7 bg-white min-w-[284px] items-center rounded-[32px]">
-          <p class="flex flex-col tracking-tight leading-9 text-center">
-            <span class="text-primary-200 text-lg lg:text-[25px] font-dm">Nattasha Julie</span>
-            <span class="text-text-gray-200 text-base lg:text-lg font-jost"> Design, Australia</span>
-					</p>
-          <div class="flex gap-6">
-             <a href="/">
-              <Facebook />
+        
+        <!-- Team Member Card -->
+        <article class="flex flex-col gap-10 w-full justify-between py-[70px] px-7 bg-white min-w-[284px] items-center rounded-[32px]">
+          <div class="flex flex-col tracking-tight leading-9 text-center">
+            <span class="text-primary-200 text-lg lg:text-[25px] font-dm">{teamMember.name}</span>
+            <span class="text-text-gray-200 text-base lg:text-lg font-jost">{teamMember.position}</span>
+          </div>
+          
+          <!-- Social Links -->
+          <div class="flex gap-6" role="list" aria-label="Media społecznościowe">
+            {socialLinks.map((social) => (
+              <a 
+                href={social.href}
+                class="hover:scale-110 transition-transform duration-200 focus:outline-none focus:ring-2 focus:ring-primary-200 focus:ring-offset-2 rounded-sm"
+                aria-label={`Odwiedź nasz profil na ${social.label}`}
+                role="listitem"
+              >
+                <social.component />
+              </a>
+            ))}
+          </div>
+          
+          <!-- Contact Info -->
+          <div class="flex flex-col tracking-tight leading-9 text-center">
+            <a 
+              href={`tel:${teamMember.phone.replace(/\s/g, '').replace(/[()]/g, '')}`}
+              class="text-text-gray-200 text-base lg:text-lg font-jost hover:text-primary-200 transition-colors duration-200"
+              aria-label={`Zadzwoń pod numer ${teamMember.phone}`}
+            >
+              {teamMember.phone}
             </a>
-            <a href="/">
-              <Twitter />
-            </a>
-            <a href="/">
-              <LinkedIn />
-            </a>
-            <a href="/">
-              <Instagram />
+            <a 
+              href={`mailto:${teamMember.email}`}
+              class="text-text-gray-200 text-base lg:text-lg font-jost hover:text-primary-200 transition-colors duration-200"
+              aria-label={`Wyślij email na adres ${teamMember.email}`}
+            >
+              {teamMember.email}
             </a>
           </div>
-          <p class="flex flex-col tracking-tight leading-9 text-center">
-            <span class="text-text-gray-200 text-base lg:text-lg font-jost"> +1 (378) 400-1234</span>
-            <span class="text-text-gray-200 text-base lg:text-lg font-jost"> julie@email.com</span>
-					</p>
-        </div>
-        <img src="/person3.png" alt="">
+        </article>
+        
+        <!-- Third Team Image -->
+        <img 
+          src={teamImages[2].src} 
+          alt={teamImages[2].alt}
+          class="flex-shrink-0"
+          loading="lazy"
+          width="284"
+          height="400"
+        />
       </div>
-	  </div>
+    </div>
   </section>
 
 </MainLayout>
-
-<style>
-
-  /* Hide scrollbar for Chrome, Safari and Opera */
-  .no-scrollbar::-webkit-scrollbar {
-      display: none;
-  }
-
-  /* Hide scrollbar for IE, Edge and Firefox */
-  .no-scrollbar {
-      -ms-overflow-style: none;  /* IE and Edge */
-      scrollbar-width: none;  /* Firefox */
-  }
-
-</style>

@@ -6,13 +6,6 @@ module.exports = {
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
   theme: {
     extend: {
-      backgroundImage: {
-        hero: "url('/banner.png')",
-        main: "url('/Background.jpg')",
-        about: "url('/aboutpage-bg.png')",
-        services: "url('/servicespage-bg.jpg')",
-        contact: "url('/contactpage-bg.jpg')",
-      },
       backgroundSize: {
         'banner-size': '105% auto',
       },

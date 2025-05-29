@@ -8,7 +8,7 @@ const menuItems = [
   { href: "/o-nas", label: "O nas" },
   { href: "/oferta", label: "Oferta" },
   { href: "/realizacje", label: "Realizacje" },
-  { href: "/wspolpraca", label: "Współpraca" },
+  { href: "/park-maszynowy", label: "Park maszynowy" },
   { href: "/kontakt", label: "Kontakt" },
 ];
 

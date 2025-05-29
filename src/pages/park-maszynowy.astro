@@ -1,57 +1,69 @@
 ---
-import MainLayout from '../layouts/main-layout.astro'
+import MainLayout from '../layouts/main-layout.astro';
+import StructuredData from '../components/structured-data.astro';
+import PageBanner from '../components/page-banner.astro';
+
 import ImageGrid from "../components/image-grid.astro";
+
+// Gallery images data for better maintainability
+const galleryImages = [
+  {
+    src: "/imgs/bociany-krawieckie-na-stole.webp",
+    alt: "Bociany krawieckie na stole"
+  },
+  {
+    src: "/imgs/bociany-krawieckie.webp",
+    alt: "Bociany krawieckie"
+  },
+  {
+    src: "/imgs/czesci-do-tapicerki-meblowej.webp",
+    alt: "Części do tapicerki meblowej"
+  },
+  {
+    src: "/imgs/dwa-bociany-krawieckie-do-ciecia-pianki.webp",
+    alt: "Dwa bociany krawieckie do cięcia pianki"
+  },
+  {
+    src: "/imgs/gotowe-uszyte-komplety.webp",
+    alt: "Gotowe uszyte komplety"
+  },
+  {
+    src: "/imgs/hala-krawiecka.webp",
+    alt: "Hala krawiecka"
+  },
+  {
+    src: "/imgs/hala-pracownicza-wusp.webp",
+    alt: "Hala pracownicza WUSP"
+  }
+];
 ---
 
-<MainLayout title='Park maszynowy' description='Park maszynowy - galeria naszych maszyn'>
+<MainLayout 
+  title="Park maszynowy - Wytwórczo Usługowa Spółdzielnia Pracy Jarocin" 
+  description="Park maszynowy - galeria naszych maszyn do produkcji tapicerki meblowej i pokrowców"
+>
 
-  <!-- Banner Section -->
-  <section class="w-full bg-services h-[350px] flex justify-center items-end">
-    <div class="py-[30px] lg:py-[41px] px-[60px] lg:px-[152px] flex flex-col justify-center items-center bg-white rounded-tl-[37px] rounded-tr-[37px] gap-2.5">
-      <h1 class="text-[30px] leading-[40px] lg:text-[50px] lg:leading-[62px] font-dm text-primary-200">Park maszynowy</h1>
-      <span class="text-base lg:text-[18px] lg:leading-[33px] tracking-tight font-jost text-text-gray">
-        <a href="/">Strona główna</a> / Park maszynowy
-      </span>
-    </div>
-  </section>
+  <!-- Structured Data -->
+  <StructuredData 
+    pageType="gallery"
+  />
+
+  <PageBanner 
+    title="Park maszynowy" 
+    breadcrumbText="Park maszynowy"
+  />
 
   <!-- Gallery Section -->
-  <section class="px-4 lg:px-12 xl:px-0 w-full mx-auto pt-[100px] lg:pt-[200px] max-w-[1400px] pb-[100px]">
-
-      <ImageGrid
-        columns={3}
-        images={[
-          {
-            src: "/imgs/bociany-krawieckie-na-stole.webp",
-            alt: "Bociany krawieckie na stole",
-          },
-          {
-            src: "/imgs/bociany-krawieckie.webp",
-            alt: "Bociany krawieckie",
-          },
-          {
-            src: "/imgs/czesci-do-tapicerki-meblowej.webp",
-            alt: "Części do tapicerki meblowej",
-          },
-          {
-            src: "/imgs/dwa-bociany-krawieckie-do-ciecia-pianki.webp",
-            alt: "Dwa bociany krawieckie do cięcia pianki",
-          },
-          {
-            src: "/imgs/gotowe-uszyte-komplety.webp",
-            alt: "Gotowe uszyte komplety",
-          },
-          {
-            src: "/imgs/hala-krawiecka.webp",
-            alt: "Hala krawiecka",
-          },
-          {
-            src: "/imgs/hala-pracownicza-wusp.webp",
-            alt: "Hala pracownicza WUSP",
-          }
-        ]}
-      />
-
+  <section 
+    class="px-4 lg:px-12 xl:px-0 w-full mx-auto pt-[100px] lg:pt-[200px] max-w-[1400px] pb-[100px]"
+    aria-labelledby="gallery-heading"
+  >
+    
+    <ImageGrid
+      columns={3}
+      images={galleryImages}
+    />
+    
   </section>
 
 </MainLayout>

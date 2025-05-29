@@ -1,4 +1,5 @@
 ---
+// layouts/main-layout.astro
 import Navbar from '../components/navbar.tsx'
 import Footer from '../components/footer.tsx'
 
@@ -24,7 +25,6 @@ const canonical = canonicalUrl ?? new URL(Astro.url.pathname, Astro.site).toStri
 const userAgent = Astro.request.headers.get('user-agent') || ''
 const isBot = /bot|crawl|spider|slurp/i.test(userAgent)
 
-// Przygotuj kod JavaScript jako string
 const analyticsScript = `
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -60,6 +60,29 @@ const analyticsScript = `
       </>
     )}
     
+    <!-- Global Styles -->
+    <style>
+      /* Optimized scrollbar hiding */
+      .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+      
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+
+      /* Enhanced focus styles for better accessibility */
+      a:focus-visible {
+        outline: 2px solid theme('colors.primary.200');
+        outline-offset: 2px;
+      }
+
+      /* Smooth transitions for interactive elements */
+      a, button {
+        transition: all 0.2s ease-in-out;
+      }
+    </style>
   </head>
   <body>
     <main>
