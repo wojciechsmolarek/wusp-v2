@@ -5,6 +5,7 @@ import ArrowSec from '../icons/arrow-sec.tsx';
 import CallIcon from "../icons/call.tsx";
 import Experience from '../components/experience.tsx';
 import { Picture } from "astro:assets";
+import { Image } from 'astro:assets';
 
 const services = [
   {
@@ -47,47 +48,44 @@ const reviews = [
 
 const projects = [
   {
-    img: '/project1.png',
+    img: '/imgs/Realizacja-WUSP-2025-02-27-13-06-03 3.webp',
     name: 'Tapicerka do łóżek',
     text: 'Meble / Tapicerka meblowa'
   },
   {
-    img: '/project2.png',
+    img: '/imgs/Realizacja-WUSP-2025-02-27-13-06-02.webp',
     name: 'Zestawy wypoczynkowe',
     text: 'Meble / Tapicerka meblowa'
   },
   {
-    img: '/project3.png',
+    img: '/imgs/kanapa-modulowa.webp',
     name: 'Kanapy modułowe',
     text: 'Meble / Tapicerka meblowa'
   },
   {
-    img: '/project4.png',
-    name: 'Fotele i pufy',
-    text: 'Meble / Tapicerka meblowa'
+    img: '/imgs/poduszki-recznie-szyte-w-polsce.webp',
+    name: 'Poduszki',
+    text: 'Meble / Akcesoria'
+  },
+  {
+    img: '/imgs/legowiska-dla-zwierzat.webp',
+    name: 'Legowiska dla zwierząt',
+    text: 'Meble / Legowiska'
   },
 ];
 
 const clientLogos = [
   {
-    img: '/clientLogo1.svg',
-    name: 'brand_name',
+    img: '/logo-benix.svg',
+    name: 'BENIX',
   },
   {
-    img: '/clientLogo2.svg',
-    name: 'brand_name',
+    img: '/logo-mirjan.svg',
+    name: 'Mirjan24',
   },
   {
-    img: '/clientLogo3.svg',
-    name: 'brand_name',
-  },
-  {
-    img: '/clientLogo4.svg',
-    name: 'brand_name',
-  },
-  {
-    img: '/clientLogo5.svg',
-    name: 'brand_name',
+    img: '/logo-pylon.svg',
+    name: 'Pylon',
   },
 ];
 
@@ -230,12 +228,12 @@ const experiences = [
         {reviews.map((rev) => (
           <div class="w-full bg-white max-w-[370px] px-[37px] py-[53px] rounded-3xl mx-auto flex flex-col justify-center gap-4 md:gap-6 shadow-sm hover:shadow-md transition-shadow duration-300">
             <div class="flex flex-col sm:flex-row gap-6 items-center">
-              <img 
+              <Picture 
                 src={rev.img} 
                 alt={`Zdjęcie ${rev.name}`} 
+                loading="lazy" 
                 width="50" 
                 height="50" 
-                loading="lazy" 
               />
               <div class="flex flex-col tracking-tight leading-9">
                 <span class="text-primary-200 text-lg lg:text-[25px] font-dm">{rev.name}</span>
@@ -249,20 +247,20 @@ const experiences = [
     </div>
   </section>
 
-  <!-- Client Logo Section - zoptymalizowana z lazy loading -->
+  <!-- Client Logo Section -->
   <section 
     class="lg:max-w-[1200px] px-12 xl:px-0 w-full mx-auto pt-[100px] lg:pt-[200px]"
     aria-label="Nasi klienci"
   >
     <div class="w-full grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 items-center justify-items-center">
       {clientLogos.map(logo => (
-        <img 
+        <Image 
           src={logo.img} 
           alt={`Logo ${logo.name}`} 
-          class="max-w-[120px] grayscale hover:grayscale-0 transition-all duration-300"
+          class="max-w-[160px] grayscale hover:grayscale-0 transition-all duration-300"
           loading="lazy"
-          width="120"
-          height="60"
+          width="160"
+          height="80"
         />
       ))}
     </div>
