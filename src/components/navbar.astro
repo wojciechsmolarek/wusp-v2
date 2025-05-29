@@ -1,5 +1,4 @@
 ---
-// components/navbar.astro
 import Logo from "../icons/logo.tsx";
 
 const menuItems = [
@@ -12,12 +11,29 @@ const menuItems = [
 ];
 
 const currentPath = Astro.url.pathname;
+
+// Speculation Rules configuration
+const speculationRules = {
+  "prerender": [
+    {
+      "urls": menuItems.map(item => item.href),
+      "eagerness": "moderate"
+    }
+  ],
+  "prefetch": [
+    {
+      "urls": menuItems.map(item => item.href),
+      "eagerness": "conservative"
+    }
+  ]
+};
 ---
 
 <header
   x-data="{ open: false }"
   class="bg-white transition-colors duration-300"
 >
+  <!-- Twój istniejący kod navbar... -->
   <div class="mx-auto flex max-w-[1200px] items-center justify-between px-12 py-11 xl:px-0">
     <!-- Logo -->
     <div class="flex">
@@ -54,7 +70,6 @@ const currentPath = Astro.url.pathname;
         :aria-expanded="open"
       >
         <span class="sr-only">Toggle menu</span>
-        <!-- Hamburger Icon - domyślnie widoczny -->
         <svg
           class="h-6 w-6"
           x-show="!open"
@@ -66,7 +81,6 @@ const currentPath = Astro.url.pathname;
         >
           <path d="M3 4H21V6H3V4ZM3 11H21V13H3V11ZM3 18H21V20H3V18Z"></path>
         </svg>
-        <!-- Close Icon - domyślnie ukryty -->
         <svg
           class="h-6 w-6"
           x-show="open"
@@ -82,7 +96,7 @@ const currentPath = Astro.url.pathname;
     </div>
   </div>
 
-  <!-- Mobile Menu Content - domyślnie ukryte -->
+  <!-- Mobile Menu Content -->
   <div
     class="xl:hidden mx-auto max-w-[1200px] px-12"
     id="mobile-menu"
@@ -96,7 +110,6 @@ const currentPath = Astro.url.pathname;
     style="display: none;"
   >
     <div class="pb-12 pt-6">
-      <!-- Navigation -->
       <nav class="flex flex-col gap-1 divide-y divide-primary-200/20">
         {menuItems.map(({ name, href }) => (
           <a
@@ -114,3 +127,6 @@ const currentPath = Astro.url.pathname;
     </div>
   </div>
 </header>
+
+<!-- Speculation Rules -->
+<script type="speculationrules" set:html={JSON.stringify(speculationRules)}></script>
