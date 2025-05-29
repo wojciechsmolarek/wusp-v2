@@ -3,7 +3,7 @@ import React from "react";
 const Logo = () => (
   <img
     src={"/logo-wusp.svg"}
-    alt={"WUSP Jarocin"}
+    alt={"Logo WUSP Jarocin - szwalnia tapicerki meblowej"}
     width={150}
     height={120}
     loading={"eager"}

@@ -55,8 +55,8 @@ const analyticsScript = `
     <!-- Google Analytics -->
     {!isBot && (
       <>
-        <script async src={`https://www.googletagmanager.com/gtag/js?id=G-YT20K3K922`}></script>
-        <script set:html={analyticsScript}></script>
+        <script is:inline type="text/partytown" defer src="https://www.googletagmanager.com/gtag/js?id=G-YT20K3K922"></script>
+        <script is:inline type="text/partytown" set:html={analyticsScript}></script>
       </>
     )}
     
@@ -98,6 +98,7 @@ const analyticsScript = `
       import Alpine from 'alpinejs';
       import collapse from '@alpinejs/collapse';
       Alpine.plugin(collapse);
+      // @ts-ignore
       window.Alpine = Alpine;
       Alpine.start();
     </script>
