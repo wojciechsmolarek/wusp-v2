@@ -105,21 +105,24 @@ const textClasses = "text-base md:text-[22px] text-center tracking-tight text-te
   pageType="home"
   />
 
-  <!-- Hero Banner -->
+ <!-- Hero Banner -->
   <section 
-    class="relative w-full bg-no-repeat bg-cover lg:min-h-[70vh] px-12 xl:px-0 flex items-center"
-    aria-label="Baner główny"
+  class="relative w-full bg-no-repeat bg-cover lg:min-h-[70vh] px-12 xl:px-0 flex items-center"
+  aria-label="Baner główny"
   >
-    <Picture
+    <img
+      srcset="/imgs/banner-homepage-400w.webp 400w, /imgs/banner-homepage-600w.webp 600w, /imgs/banner-homepage-800w.webp 800w, /imgs/banner-homepage-1000w.webp 1000w, /imgs/banner-homepage-1200w.webp 1200w, /imgs/banner-homepage-1600w.webp 1600w, /imgs/banner-homepage.webp 2000w"
+      sizes="(max-width: 400px) 400px, (max-width: 600px) 600px, (max-width: 800px) 800px, (max-width: 1000px) 1000px, (max-width: 1200px) 1200px, (max-width: 1600px) 1600px, (min-width: 1601px) 2000px"
       src="/imgs/banner-homepage.webp"
       alt="Banner główny strony WUSP, przedstawiający narzędzia krawcowej"
-      width={1374}
-      height={1002}
+      width="2333"
+      height="1159"
       loading="eager"
       fetchpriority="high"
+      decoding="async"
       class="absolute inset-0 w-full h-full object-cover object-bottom"
     />
-    
+
     <div class="relative lg:max-w-[1200px] w-full my-36 md:my-40 lg:mx-auto">
       <div class="max-w-2xl">
         <h1 class="text-4xl leading-tight md:text-6xl xl:text-7xl pb-4 font-dm md:leading-tight text-primary-200">
@@ -132,6 +135,7 @@ const textClasses = "text-base md:text-[22px] text-center tracking-tight text-te
       </div>
     </div>
   </section>
+
 
   <!-- Services Section -->
   <section 
