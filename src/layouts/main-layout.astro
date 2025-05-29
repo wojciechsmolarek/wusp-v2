@@ -1,6 +1,6 @@
 ---
 // layouts/main-layout.astro
-import Navbar from '../components/navbar.tsx'
+import Navbar from '../components/navbar.astro'
 import Footer from '../components/footer.tsx'
 
 export interface LayoutProps {
@@ -86,12 +86,21 @@ const analyticsScript = `
   </head>
   <body>
     <main>
-      <Navbar client:load />
+      <Navbar />
       <slot />
       <Footer />
     </main>
     <p class="tracking-tight text-base text-center border border-gray-300 bg-white py-10 lg:text-[18px] text-text-gray">
       Copyright © WUSP Jarocin | Utworzone przez <a href="https://www.wojciechsmolarek.pl/">Wojciecha Smolarka</a>
     </p>
+
+    <script>
+      import Alpine from 'alpinejs';
+      import collapse from '@alpinejs/collapse';
+      Alpine.plugin(collapse);
+      window.Alpine = Alpine;
+      Alpine.start();
+    </script>
+
   </body>
 </html>
