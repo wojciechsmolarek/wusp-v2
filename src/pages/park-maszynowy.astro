@@ -8,33 +8,173 @@ import ImageGrid from "../components/image-grid.astro";
 // Gallery images data for better maintainability
 const galleryImages = [
   {
+    src: "/imgs/ploter-audaces-jet-lux-plus.webp",
+    alt: "Ploter Audaces Jet Lux Plus do projektowania wzorów krawieckich"
+  },
+  {
+    src: "/imgs/ploter-przemyslowy-krawiecki.webp",
+    alt: "Ploter przemysłowy krawiecki do wykrojenia materiałów"
+  },
+  {
+    src: "/imgs/drukowania-na-ploterze-audaces.webp",
+    alt: "Drukowanie wzorów na ploterze Audaces"
+  },
+  {
+    src: "/imgs/drukowania-szablonow-krawieckich.webp",
+    alt: "Drukowanie szablonów krawieckich na ploterze"
+  },
+  {
+    src: "/imgs/program-do-szablonow-krawieckich.webp",
+    alt: "Program komputerowy do tworzenia szablonów krawieckich"
+  },
+  {
+    src: "/imgs/projekt-szablon-krawiecki.webp",
+    alt: "Projekt szablonu krawieckiego - wzór do wykrojenia elementów"
+  },
+  {
+    src: "/imgs/maszyna-do-szycia-juki.webp",
+    alt: "Maszyna do szycia marki Juki - profesjonalny sprzęt krawiecki"
+  },
+  {
+    src: "/imgs/maszyna-do-szycia-mitsubishi.webp",
+    alt: "Maszyna do szycia marki Mitsubishi - przemysłowy sprzęt szwalniczy"
+  },
+  {
+    src: "/imgs/maszyna-juki.webp",
+    alt: "Maszyna Juki do szycia tapicerki meblowej"
+  },
+  {
+    src: "/imgs/maszyna-do-szycia-z-nicmi.webp",
+    alt: "Maszyna do szycia z kolorowymi nicmi gotowa do pracy"
+  },
+  {
+    src: "/imgs/maszyny-do-szycia-w-rzedzie.webp",
+    alt: "Maszyny do szycia ustawione w rzędzie w szwalni"
+  },
+  {
+    src: "/imgs/overlock-jack.webp",
+    alt: "Overlock marki Jack - maszyna do wykańczania brzegów materiałów"
+  },
+  {
+    src: "/imgs/stanowisko-do-szycia-juki.webp",
+    alt: "Stanowisko do szycia z maszyną Juki w szwalni"
+  },
+  {
+    src: "/imgs/stanowisko-do-szycia-tapicerki-meblowej.webp",
+    alt: "Stanowisko do szycia tapicerki meblowej z profesjonalnym wyposażeniem"
+  },
+  {
+    src: "/imgs/stanowisko-do-szycia.webp",
+    alt: "Stanowisko do szycia z maszyną i akcesoriami"
+  },
+  {
+    src: "/imgs/stopka-maszyny-do-szycia.webp",
+    alt: "Stopka maszyny do szycia podczas pracy z materiałem"
+  },
+  {
+    src: "/imgs/biurko-krawcowej.webp",
+    alt: "Biurko krawcowej z narzędziami i akcesoriami do szycia"
+  },
+  {
     src: "/imgs/bociany-krawieckie-na-stole.webp",
-    alt: "Bociany krawieckie na stole"
+    alt: "Bociany krawieckie na stole roboczym do cięcia materiałów"
   },
   {
     src: "/imgs/bociany-krawieckie.webp",
-    alt: "Bociany krawieckie"
-  },
-  {
-    src: "/imgs/czesci-do-tapicerki-meblowej.webp",
-    alt: "Części do tapicerki meblowej"
+    alt: "Bociany krawieckie - narzędzia do cięcia tkanin"
   },
   {
     src: "/imgs/dwa-bociany-krawieckie-do-ciecia-pianki.webp",
-    alt: "Dwa bociany krawieckie do cięcia pianki"
-  },
-  {
-    src: "/imgs/gotowe-uszyte-komplety.webp",
-    alt: "Gotowe uszyte komplety"
+    alt: "Dwa bociany krawieckie do cięcia pianki tapicerskiej"
   },
   {
     src: "/imgs/hala-krawiecka.webp",
-    alt: "Hala krawiecka"
+    alt: "Hala krawiecka - przestrzeń produkcyjna szwalni"
   },
   {
     src: "/imgs/hala-pracownicza-wusp.webp",
-    alt: "Hala pracownicza WUSP"
-  }
+    alt: "Hala pracownicza WUSP z maszynami do szycia"
+  },
+  {
+    src: "/imgs/szwalnia-wusp.webp",
+    alt: "Szwalnia WUSP - widok na halę produkcyjną z maszynami"
+  },
+  {
+    src: "/imgs/probniki-materialow-w-szwalni.webp",
+    alt: "Próbniki materiałów w szwalni - wzornik tkanin do tapicerki"
+  },
+  {
+    src: "/imgs/probniki-materialow.webp",
+    alt: "Próbniki różnych materiałów tapicerskich i tkanin"
+  },
+  {
+    src: "/imgs/walki-materialu.webp",
+    alt: "Walki materiału tekstylnego do produkcji tapicerki"
+  },
+  {
+    src: "/imgs/pianki-do-wykrojenia.webp",
+    alt: "Pianki tapicerskie przygotowane do wykrojenia elementów mebli"
+  },
+  {
+    src: "/imgs/pianka-z-materialem-do-szycia.webp",
+    alt: "Pianka tapicerska z materiałem przygotowana do szycia"
+  },
+  {
+    src: "/imgs/czesci-do-tapicerki-meblowej.webp",
+    alt: "Części do tapicerki meblowej przygotowane do montażu"
+  },
+  {
+    src: "/imgs/nici-do-szycia.webp",
+    alt: "Kolorowe nici do szycia na szpulach"
+  },
+  {
+    src: "/imgs/nici-krawieckie.webp",
+    alt: "Profesjonalne nici krawieckie różnych kolorów"
+  },
+  {
+    src: "/imgs/szpule-nici-do-szycia.webp",
+    alt: "Szpule z nicmi do szycia w różnych kolorach"
+  },
+  {
+    src: "/imgs/szpulki-nici.webp",
+    alt: "Szpulki z kolorowymi nicmi do maszyn szyjących"
+  },
+  {
+    src: "/imgs/regal-z-nicmi-do-szycia.webp",
+    alt: "Regał z uporządkowanymi nicmi do szycia w różnych kolorach"
+  },
+  {
+    src: "/imgs/magazyn-w-szwalni-regaly-z-nicmi.webp",
+    alt: "Magazyn w szwalni z regałami pełnymi nici do szycia"
+  },
+  {
+    src: "/imgs/magazyn-z-materialami.webp",
+    alt: "Magazyn z materiałami tekstylnymi i surowcami do produkcji"
+  },
+  {
+    src: "/imgs/certyfikat-firma-godna-zaufania-2018.webp",
+    alt: "Certyfikat Firma Godna Zaufania z 2018 roku"
+  },
+  {
+    src: "/imgs/certyfikat-firma-godna-zaufania-2019.webp",
+    alt: "Certyfikat Firma Godna Zaufania z 2019 roku"
+  },
+  {
+    src: "/imgs/certyfikaty-wusp-jarocin.webp",
+    alt: "Certyfikaty firmy WUSP z Jarocina"
+  },
+  {
+    src: "/imgs/statuetka-firma-godna-zaufania.webp",
+    alt: "Statuetka Firma Godna Zaufania - nagroda za wysoką jakość usług"
+  },
+  {
+    src: "/imgs/odznaki-wusp.webp",
+    alt: "Odznaki WUSP - certyfikaty i wyróżnienia firmy"
+  },
+  {
+    src: "/imgs/instrukcja-bhp-przy-obsludze-maszyn-szyjacych.webp",
+    alt: "Instrukcja BHP przy obsłudze maszyn szyących - zasady bezpieczeństwa w szwalni"
+  },  
 ];
 ---
 

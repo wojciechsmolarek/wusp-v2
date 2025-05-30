@@ -150,9 +150,9 @@ const textClasses = "text-base md:text-[22px] text-center tracking-tight text-te
           aria-label={`Dowiedz się więcej o ${service.title}`}
         />
         
-        <h3 class="text-center text-text-blue font-dm text-xl md:text-2xl leading-relaxed mb-3">
+        <span class="text-center text-text-blue font-dm text-xl md:text-2xl leading-relaxed mb-3 block">
           {service.title}
-        </h3>
+        </span>
         
         <p class="text-base md:text-xl tracking-tight text-text-gray leading-relaxed text-center mb-4">
           {service.text}
@@ -213,6 +213,7 @@ const textClasses = "text-base md:text-[22px] text-center tracking-tight text-te
     </div>
   </section>
 
+{/* 
   <!-- Reviews Section -->
   <section class={`${containerClasses} ${sectionSpacing}`} aria-labelledby="reviews-heading">
     <div class="w-full bg-primary-300 rounded-[48px] px-6 py-20">
@@ -243,10 +244,16 @@ const textClasses = "text-base md:text-[22px] text-center tracking-tight text-te
       </div>
     </div>
   </section>
+*/}
 
   <!-- Client Logos -->
   <section class={`${containerClasses} ${sectionSpacing}`} aria-label="Nasi klienci">
-    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 items-center justify-items-center">
+    <header class="text-center mb-12 lg:mb-20">
+      <h2 id="projects-heading" class={`${headingClasses} max-w-2xl pb-2 mx-auto`}>
+        Zaufali nam
+      </h2>
+    </header>
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-8 items-center justify-items-center">
       {clientLogos.map(logo => (
         <Image 
           src={logo.img} 
