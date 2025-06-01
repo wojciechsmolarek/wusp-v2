@@ -38,7 +38,10 @@ const analyticsScript = `
   });
   
   gtag('js', new Date());
-  gtag('config', 'G-YT20K3K922');
+  gtag('config', 'G-YT20K3K922', {
+    'send_page_view': true,
+    'cookie_flags': 'SameSite=None;Secure'
+  });
 `;
 ---
 
@@ -55,7 +58,7 @@ const analyticsScript = `
     <!-- Google Analytics -->
     {!isBot && (
       <>
-        <script is:inline type="text/partytown" defer src="https://www.googletagmanager.com/gtag/js?id=G-YT20K3K922"></script>
+        <script is:inline type="text/partytown" src="https://www.googletagmanager.com/gtag/js?id=G-YT20K3K922"></script>
         <script is:inline type="text/partytown" set:html={analyticsScript}></script>
       </>
     )}
