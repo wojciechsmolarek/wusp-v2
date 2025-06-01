@@ -8,8 +8,8 @@ const GA_MEASUREMENT_ID = 'G-YT20K3K922';
 <link rel="preconnect" href="https://www.google-analytics.com" crossorigin />
 
 <!-- Google tag (gtag.js) -->
-<script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}></script>
-<script define:vars={{ GA_MEASUREMENT_ID }}>
+<script type="text/partytown" async src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}></script>
+<script type="text/partytown" is:inline define:vars={{ GA_MEASUREMENT_ID }}>
   window.dataLayer = window.dataLayer || [];
   function gtag() {
     window.dataLayer.push(arguments);
@@ -78,17 +78,6 @@ const GA_MEASUREMENT_ID = 'G-YT20K3K922';
     };
 
     checkConsent();
-    let attempts = 0;
-    const interval = setInterval(() => {
-      checkConsent();
-      attempts++;
-      if (attempts >= 10) {
-        clearInterval(interval);
-      }
-    }, 1000);
-
-    document.addEventListener('cookieconsent_statuschange', () => {
-      checkConsent();
-    });
+    document.addEventListener('cookieconsent_statuschange', checkConsent);
   });
 </script> 
