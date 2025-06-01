@@ -2,6 +2,7 @@
 // layouts/main-layout.astro
 import Navbar from '../components/navbar.astro'
 import Footer from '../components/footer.tsx'
+import GoogleAnalytics from '../components/GoogleAnalytics.astro'
 
 export interface LayoutProps {
   title: string
@@ -53,47 +54,7 @@ const globalStyles = `
     <link rel="canonical" href={canonical} />
     <meta name="google-site-verification" content="xvXG3rZMSFvEn-K4FY67d0ngYVtCWBqN3y6E7zR20Dk" />
 
-    <!-- Preconnect do domen GA4 -->
-    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
-    <link rel="preconnect" href="https://www.google-analytics.com" crossorigin />
-
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YT20K3K922"></script>
-    <script>
-
-        declare global {
-        interface Window {
-          dataLayer: any[];
-          gtag: (...args: any[]) => void;
-        }
-      }
-
-      window.dataLayer = window.dataLayer || [];
-      function gtag(...args: any[]) {
-        window.dataLayer.push(arguments);
-      }
-      
-      gtag('js', new Date());
-      gtag('consent', 'default', {
-        'analytics_storage': 'denied',
-        'ad_storage': 'denied',
-        'functionality_storage': 'denied',
-        'personalization_storage': 'denied'
-      });
-      
-      gtag('config', 'G-YT20K3K922', {
-        'send_page_view': true,
-        'cookie_flags': 'SameSite=None;Secure',
-        'anonymize_ip': true,
-        'transport_url': 'https://www.google-analytics.com',
-        'allow_google_signals': false,
-        'allow_ad_personalization_signals': false,
-        'debug_mode': false,
-        'page_location': window.location.href,
-        'page_referrer': document.referrer,
-        'page_title': document.title
-      });
-    </script>
+    <GoogleAnalytics />
 
     <!-- Global Styles -->
     <style set:html={globalStyles}></style>

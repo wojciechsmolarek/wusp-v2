@@ -31,14 +31,20 @@ export default defineConfig({
               label: '<a href="https://policies.google.com/privacy" target="_blank">Google Analytics</a>',
               onAccept: () => {
                 try {
-                  if (typeof gtag !== 'undefined') {
-                    gtag('consent', 'update', {
+                  if (typeof window.gtag !== 'undefined') {
+                    window.gtag('consent', 'update', {
                       'analytics_storage': 'granted',
                       'ad_storage': 'granted',
                       'functionality_storage': 'granted',
                       'personalization_storage': 'granted'
                     });
                     console.log('GA4 consent granted');
+                    // Wymuszamy wysłanie page_view po akceptacji
+                    window.gtag('event', 'page_view', {
+                      'page_title': document.title,
+                      'page_location': window.location.href,
+                      'page_referrer': document.referrer
+                    });
                   } else {
                     console.error('gtag nie jest zdefiniowany podczas akceptacji');
                   }
@@ -48,8 +54,8 @@ export default defineConfig({
               },
               onReject: () => {
                 try {
-                  if (typeof gtag !== 'undefined') {
-                    gtag('consent', 'update', {
+                  if (typeof window.gtag !== 'undefined') {
+                    window.gtag('consent', 'update', {
                       'analytics_storage': 'denied',
                       'ad_storage': 'denied',
                       'functionality_storage': 'denied',
