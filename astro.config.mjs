@@ -4,6 +4,7 @@ import react from "@astrojs/react";
 import vercel from "@astrojs/vercel";
 import sitemap from "@astrojs/sitemap";
 import jopSoftwarecookieconsent from "@jop-software/astro-cookieconsent";
+import partytown from "@astrojs/partytown";
 
 export default defineConfig({
   site: 'https://wusp-jarocin.pl/',
@@ -12,6 +13,12 @@ export default defineConfig({
     tailwind(),
     react(),
     sitemap(),
+    partytown({
+      config: {
+        forward: ["dataLayer.push", "gtag"],
+        loadScriptsOnMainThread: ["gtag", "dataLayer"]
+      }
+    }),
     jopSoftwarecookieconsent({
       guiOptions: {
         consentModal: {

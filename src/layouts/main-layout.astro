@@ -22,9 +22,6 @@ const isHome = Astro.url.pathname === "/"
 const pageTitle = isHome ? title : `${title} | ${SITE_SUFFIX}`
 const canonical = canonicalUrl ?? new URL(Astro.url.pathname, Astro.site).toString()
 
-const userAgent = Astro.request.headers.get('user-agent') || ''
-const isBot = /bot|crawl|spider|slurp/i.test(userAgent)
-
 const analyticsScript = `
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -38,16 +35,7 @@ const analyticsScript = `
   gtag('config', 'G-YT20K3K922', {
     'send_page_view': true,
     'cookie_flags': 'SameSite=None;Secure',
-    'debug_mode': true
-  });
-  console.log('GA4 zainicjalizowany');
-  window.addEventListener('load', () => {
-    console.log('Strona załadowana, sprawdzam GA4');
-    if (typeof gtag !== 'undefined') {
-      console.log('gtag jest zdefiniowany');
-    } else {
-      console.error('gtag nie jest zdefiniowany po załadowaniu strony');
-    }
+    'anonymize_ip': true
   });
 `;
 ---
@@ -63,12 +51,8 @@ const analyticsScript = `
     <meta name="google-site-verification" content="xvXG3rZMSFvEn-K4FY67d0ngYVtCWBqN3y6E7zR20Dk" />
 
     <!-- Google Analytics -->
-    {!isBot && (
-      <>
-        <script is:inline src="https://www.googletagmanager.com/gtag/js?id=G-YT20K3K922"></script>
-        <script is:inline set:html={analyticsScript}></script>
-      </>
-    )}
+    <script type="text/partytown" src="https://www.googletagmanager.com/gtag/js?id=G-YT20K3K922"></script>
+    <script type="text/partytown" set:html={analyticsScript}></script>
 
     <!-- Global Styles -->
     <style>
