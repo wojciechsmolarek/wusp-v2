@@ -4,7 +4,6 @@ import react from "@astrojs/react";
 import vercel from "@astrojs/vercel";
 import sitemap from "@astrojs/sitemap";
 import jopSoftwarecookieconsent from "@jop-software/astro-cookieconsent";
-import partytown from "@astrojs/partytown";
 
 export default defineConfig({
   site: 'https://wusp-jarocin.pl/',
@@ -13,11 +12,6 @@ export default defineConfig({
     tailwind(),
     react(),
     sitemap(),
-    partytown({
-      config: {
-        forward: ["dataLayer.push", "gtag"],
-      },
-    }),
     jopSoftwarecookieconsent({
       guiOptions: {
         consentModal: {
@@ -36,23 +30,37 @@ export default defineConfig({
             ga4: {
               label: '<a href="https://policies.google.com/privacy" target="_blank">Google Analytics</a>',
               onAccept: () => {
-                if (typeof gtag !== 'undefined') {
-                  gtag('consent', 'update', {
-                    'analytics_storage': 'granted',
-                    'ad_storage': 'granted',
-                    'functionality_storage': 'granted',
-                    'personalization_storage': 'granted'
-                  });
+                try {
+                  if (typeof gtag !== 'undefined') {
+                    gtag('consent', 'update', {
+                      'analytics_storage': 'granted',
+                      'ad_storage': 'granted',
+                      'functionality_storage': 'granted',
+                      'personalization_storage': 'granted'
+                    });
+                    console.log('GA4 consent granted');
+                  } else {
+                    console.error('gtag nie jest zdefiniowany podczas akceptacji');
+                  }
+                } catch (error) {
+                  console.error('Błąd podczas aktualizacji consent:', error);
                 }
               },
               onReject: () => {
-                if (typeof gtag !== 'undefined') {
-                  gtag('consent', 'update', {
-                    'analytics_storage': 'denied',
-                    'ad_storage': 'denied',
-                    'functionality_storage': 'denied',
-                    'personalization_storage': 'denied'
-                  });
+                try {
+                  if (typeof gtag !== 'undefined') {
+                    gtag('consent', 'update', {
+                      'analytics_storage': 'denied',
+                      'ad_storage': 'denied',
+                      'functionality_storage': 'denied',
+                      'personalization_storage': 'denied'
+                    });
+                    console.log('GA4 consent denied');
+                  } else {
+                    console.error('gtag nie jest zdefiniowany podczas odrzucenia');
+                  }
+                } catch (error) {
+                  console.error('Błąd podczas aktualizacji consent:', error);
                 }
               },
               cookies: [

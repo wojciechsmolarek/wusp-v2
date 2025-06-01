@@ -28,19 +28,26 @@ const isBot = /bot|crawl|spider|slurp/i.test(userAgent)
 const analyticsScript = `
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
-  
-  gtag('consent', 'default', {
-    'ad_storage': 'denied',
-    'analytics_storage': 'denied',
-    'functionality_storage': 'denied',
-    'personalization_storage': 'denied',
-    'security_storage': 'granted'
-  });
-  
   gtag('js', new Date());
+  gtag('consent', 'default', {
+    'analytics_storage': 'denied',
+    'ad_storage': 'denied',
+    'functionality_storage': 'denied',
+    'personalization_storage': 'denied'
+  });
   gtag('config', 'G-YT20K3K922', {
     'send_page_view': true,
-    'cookie_flags': 'SameSite=None;Secure'
+    'cookie_flags': 'SameSite=None;Secure',
+    'debug_mode': true
+  });
+  console.log('GA4 zainicjalizowany');
+  window.addEventListener('load', () => {
+    console.log('Strona załadowana, sprawdzam GA4');
+    if (typeof gtag !== 'undefined') {
+      console.log('gtag jest zdefiniowany');
+    } else {
+      console.error('gtag nie jest zdefiniowany po załadowaniu strony');
+    }
   });
 `;
 ---
@@ -58,11 +65,11 @@ const analyticsScript = `
     <!-- Google Analytics -->
     {!isBot && (
       <>
-        <script is:inline type="text/partytown" src="https://www.googletagmanager.com/gtag/js?id=G-YT20K3K922"></script>
-        <script is:inline type="text/partytown" set:html={analyticsScript}></script>
+        <script is:inline src="https://www.googletagmanager.com/gtag/js?id=G-YT20K3K922"></script>
+        <script is:inline set:html={analyticsScript}></script>
       </>
     )}
-    
+
     <!-- Global Styles -->
     <style>
       /* Optimized scrollbar hiding */
