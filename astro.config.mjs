@@ -45,18 +45,14 @@ export default defineConfig({
                       'functionality_storage': 'granted',
                       'personalization_storage': 'granted'
                     });
-                    console.log('GA4 consent granted');
-                    // Wymuszamy wysłanie page_view po akceptacji
                     window.gtag('event', 'page_view', {
                       'page_title': document.title,
                       'page_location': window.location.href,
                       'page_referrer': document.referrer
                     });
-                  } else {
-                    console.error('gtag nie jest zdefiniowany podczas akceptacji');
                   }
                 } catch (error) {
-                  console.error('Błąd podczas aktualizacji consent:', error);
+                  // Ignorujemy błędy w trybie produkcyjnym
                 }
               },
               onReject: () => {
@@ -68,12 +64,9 @@ export default defineConfig({
                       'functionality_storage': 'denied',
                       'personalization_storage': 'denied'
                     });
-                    console.log('GA4 consent denied');
-                  } else {
-                    console.error('gtag nie jest zdefiniowany podczas odrzucenia');
                   }
                 } catch (error) {
-                  console.error('Błąd podczas aktualizacji consent:', error);
+                  // Ignorujemy błędy w trybie produkcyjnym
                 }
               },
               cookies: [
