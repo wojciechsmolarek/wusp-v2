@@ -7,6 +7,7 @@ const menuItems = [
   { name: 'Oferta', href: '/oferta' },
   { name: 'Realizacje', href: '/realizacje' },
   { name: 'Park maszynowy', href: '/park-maszynowy' },
+  { name: 'MebleJarocin.pl', href: 'https://meblejarocin.com/' },
   { name: 'Kontakt', href: '/kontakt' },
 ];
 
@@ -50,11 +51,21 @@ const speculationRules = {
         <a
           href={href}
           class="text-xl leading-6 font-jost text-primary-200 relative group py-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary-200 focus-visible:rounded-sm transition-colors"
-          class:list={[{ 'font-medium': currentPath === href }]}
+          class:list={[
+            { 'font-medium': currentPath === href },
+            { 'text-[#e10101]': href === 'https://meblejarocin.com/' }
+          ]}
           aria-current={currentPath === href ? "page" : undefined}
+          target={href === 'https://meblejarocin.com/' ? '_blank' : undefined}
+          rel={href === 'https://meblejarocin.com/' ? 'noopener noreferrer' : undefined}
+          aria-label={href === 'https://meblejarocin.com/' ? `${name} (otwiera się w nowym oknie)` : undefined}
         >
           <span>{name}</span>
-          <span class="absolute bottom-0 left-0 w-full h-0.5 bg-primary-200 transform scale-x-0 transition-transform duration-300 ease-out origin-left group-hover:scale-x-100 group-focus-visible:scale-x-100"></span>
+          <span class="absolute bottom-0 left-0 w-full h-0.5 transform scale-x-0 transition-transform duration-300 ease-out origin-left group-hover:scale-x-100 group-focus-visible:scale-x-100" 
+                class:list={[
+                  { 'bg-primary-200': href !== 'https://meblejarocin.com/' },
+                  { 'bg-[#e10101]': href === 'https://meblejarocin.com/' }
+                ]}></span>
         </a>
       ))}
     </nav>
@@ -114,8 +125,14 @@ const speculationRules = {
           <a
             href={href}
             class="text-primary-200 group inline-flex py-6 text-2xl font-jost tracking-tight transition focus-visible:outline-none hover:text-primary-100"
-            class:list={[{ 'font-medium': currentPath === href }]}
+            class:list={[
+              { 'font-medium': currentPath === href },
+              { 'text-[#e10101]': href === 'https://meblejarocin.com/' }
+            ]}
             @click="open = false"
+            target={href === 'https://meblejarocin.com/' ? '_blank' : undefined}
+            rel={href === 'https://meblejarocin.com/' ? 'noopener noreferrer' : undefined}
+            aria-label={href === 'https://meblejarocin.com/' ? `${name} (otwiera się w nowym oknie)` : undefined}
           >
             <div class="group-focus-visible:outline-primary-200 flex flex-1 items-center rounded-2xl group-focus-visible:outline group-focus-visible:outline-2 group-focus-visible:outline-offset-2">
               <span>{name}</span>
